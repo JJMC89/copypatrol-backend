@@ -81,7 +81,7 @@ version = "0.0.0"
 [tool.poetry.dependencies]
 python = "^3.9"
 mwparserfromhell = "0.6.4"
-pywikibot = {version = "8.0.3", extras = ["eventstreams", "mwoauth"]}
+pywikibot = {version = "8.1.2", extras = ["eventstreams", "mwoauth"]}
 pywikibot-extensions = "23.3.25"
 requests = "2.29.0"
 sqlalchemy = {version = "2.0.12", extras = ["pymysql"]}

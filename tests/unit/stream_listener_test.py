@@ -92,7 +92,9 @@ def test_revision_stream(mocker):
         "pywikibot._code_fam_from_url",
         wraps=_code_fam_from_url,
     )
-    site = pywikibot.Site("en", "wikipedia")
+    mocker.patch("pywikibot.config.family", "wikipedia")
+    mocker.patch("pywikibot.config.mylang", "en")
+    site = pywikibot.Site()
     mocker.patch(
         "pywikibot.comms.eventstreams.EventSource",
         _source,
