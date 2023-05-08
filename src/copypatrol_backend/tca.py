@@ -35,10 +35,6 @@ _JSON = Union[bool, float, str, None, dict[str, "_JSON"], list["_JSON"]]
 JSON = dict[str, _JSON]
 
 
-# TODO: move into Retry() after urllib3 v2 is released
-Retry.DEFAULT_BACKOFF_MAX = pywikibot.config.retry_max
-
-
 class TurnitinCoreAPI:
     """Turnitin Core API."""
 
@@ -49,6 +45,7 @@ class TurnitinCoreAPI:
             total=pywikibot.config.max_retries,
             status_forcelist=(429, 500),
             backoff_factor=1,
+            backoff_max=pywikibot.config.retry_max,  # type: ignore[call-arg]
         )
         self._session = requests.Session()
         self._session.headers.update(HEADERS)
