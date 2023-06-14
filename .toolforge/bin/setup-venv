@@ -2,7 +2,7 @@
 # shellcheck disable=SC1090
 set -euo pipefail
 
-VENV="$HOME/repo/.venv"
+VENV="$HOME/backend/.venv"
 
 rm -fdr "$VENV"
 mkdir -p "$VENV"
