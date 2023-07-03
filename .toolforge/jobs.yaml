@@ -2,7 +2,7 @@
   name: dummy-defaults-job
   command: echo this is a dummy job to set defaults
   emails: onfailure
-  image: python3.9
+  image: python3.11
   no-filelog: true
 - name: store-changes
   command: $HOME/backend/.venv/bin/copypatrol-backend store-changes

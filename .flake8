@@ -2,7 +2,7 @@
 extend-ignore =
     D105
     D107
-min-python-version = 3.9.2
+min-python-version = 3.11.0
 per-file-ignores =
     __init__.py: D104
     testing/*: D

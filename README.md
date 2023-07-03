@@ -76,7 +76,7 @@ key = example-tca-key
 
 clone this repository and setup the virtual enviornment
 ```
-rm -fdr $HOME/backend && git clone --depth 1 https://github.com/JJMC89/copypatrol-backend $HOME/backend && toolforge-jobs run setup-venv --command $HOME/backend/.toolforge/bin/setup-venv --image python3.9 --wait
+rm -fdr $HOME/backend && git clone --depth 1 https://github.com/JJMC89/copypatrol-backend $HOME/backend && toolforge-jobs run setup-venv --command $HOME/backend/.toolforge/bin/setup-venv --image python3.11 --wait
 ```
 
 create database and tables
@@ -84,7 +84,7 @@ create database and tables
 create database sNNNNN__copypatrol_p character set = utf8mb4;
 ```
 ```
-toolforge-jobs run create-tables --command "$HOME/backend/.venv/bin/copypatrol-backend db --create-tables" --image python3.9 --wait
+toolforge-jobs run create-tables --command "$HOME/backend/.venv/bin/copypatrol-backend db --create-tables" --image python3.11 --wait
 ```
 
 load jobs
