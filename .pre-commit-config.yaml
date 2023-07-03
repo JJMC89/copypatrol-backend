@@ -37,18 +37,11 @@ repos:
       - id: python-no-log-warn
       - id: python-use-type-annotations
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.7.0
+    rev: v3.8.0
     hooks:
       - id: pyupgrade
         args:
-          - --py39-plus
-        exclude: '/database\.py$'
-      - id: pyupgrade
-        name: pyupgrade (keep runtime types)
-        args:
-          - --py39-plus
-          - --keep-runtime-typing  # sqlalchemy
-        files: '/database\.py$'
+          - --py311-plus
   - repo: https://github.com/PyCQA/autoflake
     rev: v2.2.0
     hooks:

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from typing import TYPE_CHECKING, Any, Optional, Union
+from typing import TYPE_CHECKING, Any, Union
 from uuid import UUID
 
 import sqlalchemy.dialects.mysql
@@ -210,18 +210,18 @@ class Diff(_TableBase):
     rev_parent_id: Mapped[int] = mapped_column(UnsignedInteger)
     rev_timestamp: Mapped[Timestamp] = mapped_column(_Timestamp(14))
     rev_user_text: Mapped[str] = mapped_column(_VarBinary(255))
-    submission_id: Mapped[Optional[_UuidType]] = mapped_column(
+    submission_id: Mapped[_UuidType | None] = mapped_column(
         _Uuid(36),
         init=False,
         index=True,
         unique=True,
     )
     status: Mapped[int] = mapped_column(TinyInt, index=True)
-    status_timestamp: Mapped[Optional[Timestamp]] = mapped_column(
+    status_timestamp: Mapped[Timestamp | None] = mapped_column(
         _Timestamp(14),
         init=False,
     )
-    status_user_text: Mapped[Optional[str]] = mapped_column(
+    status_user_text: Mapped[str | None] = mapped_column(
         _VarBinary(255),
         init=False,
     )
@@ -252,7 +252,7 @@ class Source(_TableBase):
         )
     )
     description: Mapped[str] = mapped_column(_LargeBinary)
-    url: Mapped[Optional[str]] = mapped_column(_LargeBinary)
+    url: Mapped[str | None] = mapped_column(_LargeBinary)
     percent: Mapped[float] = mapped_column(UnsignedFloat)
 
 
