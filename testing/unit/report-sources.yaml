@@ -1,0 +1,8 @@
+responses:
+- response:
+    auto_calculate_content_length: false
+    body: '{"match_aggregates":[{"source_type":"INTERNET","description":"www.oocities.org","percent":89.28571,"aggregate_id":"SU5URVJORVRfd3d3Lm9vY2l0aWVzLm9yZw==","match_sources":[{"source_type":"INTERNET","description":"http://www.oocities.org/heartland/pines/1107/clyrics4.html","download_date":"2020-05-08","link":"http://www.oocities.org/heartland/pines/1107/clyrics4.html","source_id":"b2lkOjM3ODg6MTUzOTcxMjg5MQ==","percent":89.28571,"visibility":"FULL","match_groups":[{"glimpse_id":"b2lkOjM3ODg6MTUzOTcxMjg5MV8wX292ZXJ2aWV3","match_segments":[[66,631]]}]}]}],"overall_match_percentage":89.28571,"submission_id":"7b3074cf-4d3b-4648-8c68-f56aee0f1058"}'
+    content_type: text/plain
+    method: GET
+    status: 200
+    url: https://wikimedia.tii-sandbox.com/api/v1/submissions/7b3074cf-4d3b-4648-8c68-f56aee0f1058/similarity/view/overview

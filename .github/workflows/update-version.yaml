@@ -1,0 +1,33 @@
+name: update version
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+jobs:
+  update-version:
+    name: update version
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - name: install poetry
+        uses: snok/install-poetry@v1
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: check and update version
+        run: |
+          DATE=$(date -u +%Y.%-m.%-d)
+          if [ $(poetry version --short) != $DATE ]; then
+            poetry version $DATE
+            git add pyproject.toml
+            git config user.name github-actions[bot]
+            git config user.email github-actions[bot]@users.noreply.github.com
+            git commit -m "bump version to $DATE"
+            git push
+          fi

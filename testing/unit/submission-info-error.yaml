@@ -1,0 +1,11 @@
+responses:
+  - response:
+      method: GET
+      url: >-
+        https://wikimedia.tii-sandbox.com/api/v1/submissions/7b3074cf-4d3b-4648-8c68-f56aee0f1058
+      body: >-
+        {"owner":"Example","title":"unit test
+        submission","status":"ERROR","id":"7b3074cf-4d3b-4648-8c68-f56aee0f1058","content_type":"text/plain","error_code":"PROCESSING_ERROR","created_time":"2022-12-14T00:16:29.377Z"}
+      status: 200
+      content_type: text/plain
+      auto_calculate_content_length: false

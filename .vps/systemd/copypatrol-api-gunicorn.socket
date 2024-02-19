@@ -1,0 +1,8 @@
+[Unit]
+Description=copypatrol api gunicorn socket
+
+[Socket]
+ListenStream=/run/copypatrol-api-gunicorn.sock
+
+[Install]
+WantedBy=sockets.target

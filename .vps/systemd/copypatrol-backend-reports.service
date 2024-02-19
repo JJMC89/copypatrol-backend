@@ -1,0 +1,14 @@
+[Unit]
+Description=copypatrol backend reports daemon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+EnvironmentFile=/etc/copypatrol-env.sh
+ExecStart=/var/www/.venv/bin/copypatrol-backend reports -log:reports.log
+ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != 0 ]; then python3 /var/www/copypatrol-backend/.vps/bin/failure-mailer.py %n %H; fi'
+SyslogIdentifier=copypatrol-backend-reports
+
+[Install]
+WantedBy=multi-user.target

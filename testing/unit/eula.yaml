@@ -1,0 +1,17 @@
+responses:
+  - response:
+      method: GET
+      url: 'https://wikimedia.tii-sandbox.com/api/v1/eula/latest?lang=en-US'
+      body: >-
+        {"version":"v1beta","valid_from":"2018-04-30T17:00:00Z","valid_until":null,"url":"https://static.turnitin.com/eula/v1beta/en-us/eula.html","available_languages":["sv-SE","zh-CN","ja-JP","ko-KR","es-MX","nl-NL","ru-RU","zh-TW","ar-SA","pt-BR","de-DE","el-GR","nb-NO","cs-CZ","da-DK","tr-TR","pl-PL","fi-FI","it-IT","vi-VN","fr-FR","en-US","ro-RO"]}
+      status: 200
+      content_type: text/plain
+      auto_calculate_content_length: false
+  - response:
+      method: POST
+      url: 'https://wikimedia.tii-sandbox.com/api/v1/eula/v1beta/accept'
+      body: >-
+        {"version":"v1beta","user_id":":system:","language":"en-US","accepted_timestamp":"2022-12-13T23:42:31Z"}
+      status: 200
+      content_type: text/plain
+      auto_calculate_content_length: false

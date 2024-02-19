@@ -1,0 +1,10 @@
+responses:
+  - response:
+      method: GET
+      url: >-
+        https://wikimedia.tii-sandbox.com/api/v1/submissions/7b3074cf-4d3b-4648-8c68-f56aee0f1058/similarity
+      body: >-
+        {"overall_match_percentage":89,"internet_match_percentage":89,"publication_match_percentage":0,"submitted_works_match_percentage":0,"status":"COMPLETE","time_generated":"2022-12-14T01:19:05.8Z","time_requested":"2022-12-14T01:18:53.463Z","submission_id":"7b3074cf-4d3b-4648-8c68-f56aee0f1058","top_matches":[{"percentage":89.28571,"source_type":"INTERNET","matched_word_count_total":100,"name":"www.merry-christmas.org.uk"},{"percentage":89.28571,"source_type":"INTERNET","matched_word_count_total":100,"name":"santasearch.org"},{"percentage":89.28571,"source_type":"INTERNET","matched_word_count_total":100,"name":"alkitab.sabda.org"},{"percentage":89.28571,"source_type":"INTERNET","matched_word_count_total":100,"name":"bible.sabda.org"}],"top_source_largest_matched_word_count":100}
+      status: 200
+      content_type: text/plain
+      auto_calculate_content_length: false

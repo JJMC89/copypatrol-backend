@@ -1,0 +1,12 @@
+[Unit]
+Description=copypatrol backend reports timer
+Requires=copypatrol-backend-reports.service
+
+[Timer]
+AccuracySec=5m
+OnStartupSec=5m
+OnUnitInactiveSec=30m
+Unit=copypatrol-backend-reports.service
+
+[Install]
+WantedBy=timers.target

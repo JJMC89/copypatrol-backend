@@ -1,0 +1,112 @@
+[build-system]
+requires = ["poetry-core>=1.7.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+target-version = ["py311"]
+line-length = 79  # default: 88
+
+
+[tool.coverage]
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.coverage.run]
+plugins = [
+    "covdefaults",
+]
+
+
+[tool.isort]
+atomic = true
+profile = "black"
+py_version = 311
+add_imports = ["from __future__ import annotations"]
+lines_after_imports = 2
+
+
+[tool.mypy]
+python_version = 3.11
+enable_error_code = [
+    "ignore-without-code",
+]
+strict = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pywikibot.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    "tests.*",
+]
+disallow_untyped_calls = false
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = [
+    "tests.unit.config_test",
+]
+disable_error_code = [
+    "attr-defined",  # types-cachetools missing __wrapped__
+]
+
+
+[tool.poetry]
+authors = ["JJMC89"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+description = "CopyPatrol backend bot"
+documentation = "https://meta.wikimedia.org/wiki/Special:MyLanguage/CopyPatrol"
+keywords = ["copyright", "wikipedia"]
+license = "MIT"
+name = "copypatrol-backend"
+readme = "README.md"
+repository = "https://github.com/JJMC89/copypatrol-backend"
+version = "2024.2.19"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4"
+cachetools = "5.3.2"
+flask = "3.0.2"
+gunicorn = "21.2.0"
+mwparserfromhell = "0.6.6"
+pywikibot = {version = "8.6.0", extras = ["eventstreams", "mwoauth"]}
+pywikibot-extensions = "23.3.25"
+requests = "2.31.0"
+sqlalchemy = {version = "2.0.27", extras = ["pymysql"]}
+urllib3 = "2.2.1"
+
+[tool.poetry.dev-dependencies]
+covdefaults = "2.3.0"
+pytest = "8.0.1"
+pytest-cov = "4.1.0"
+pytest-env = "1.1.3"
+pytest-mock = "3.12.0"
+pytest-randomly = "3.15.0"
+pytest-socket = "0.7.0"
+responses = "0.25.0"
+
+[tool.poetry.scripts]
+copypatrol-backend = "copypatrol_backend.cli:cli"
+
+
+[tool.pytest]
+
+[tool.pytest.ini_options]
+addopts = "--cov --no-cov-on-fail"
+verbosity_assertions = 2
+
+[tool.pytest_env]
+CPB_ENV = {value = "pytest", skip_if_set = false}
+CPB_DB_DRIVERNAME = {value = "sqlite", skip_if_set = true}

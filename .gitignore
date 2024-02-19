@@ -1,0 +1,4 @@
+*.py[cod]
+.coverage
+/.copypatrol.ini*
+copypatrol-env.sh

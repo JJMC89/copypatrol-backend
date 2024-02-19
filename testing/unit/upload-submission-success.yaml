@@ -1,0 +1,11 @@
+responses:
+  - response:
+      method: PUT
+      url: >-
+        https://wikimedia.tii-sandbox.com/api/v1/submissions/7b3074cf-4d3b-4648-8c68-f56aee0f1058/original
+      body: >-
+        {"message":"Successfully uploaded file for submission
+        7b3074cf-4d3b-4648-8c68-f56aee0f1058"}
+      status: 202
+      content_type: text/plain
+      auto_calculate_content_length: false

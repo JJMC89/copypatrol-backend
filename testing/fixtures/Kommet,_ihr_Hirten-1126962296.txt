@@ -1,0 +1,175 @@
+{{Infobox musical composition
+| name             = "{{lang|de|Kommet, ihr Hirten|italic=no}}"
+| type             = German [[Christmas carol]]
+| image            = Carl Riedel portrait.jpg
+| image_upright    = 
+| caption          = Carl Riedel, who wrote the text
+| translation      = "Come, All Ye Shepherds"
+| text             = by [[Carl Riedel]]
+| language         = German
+| written          = 
+| based_on         = "{{lang|cs|Nesem vám noviny|italic=no}}"
+| melody           = Bohemian
+| performed        = 
+| published        = {{Start date|1870}}
+}}
+"'''{{lang|de|Kommet, ihr Hirten|italic=no}}'''" (Come, ye shepherds) is a German [[Christmas carol]] from [[Bohemia]] which was derived from a Czech carol, "'''{{lang|cs|Nesem vám noviny|lit=Bringing the news|italic=no}}'''". It reflects elements from the [[nativity story]], the [[annunciation to the shepherds]], their walk to the manger and [[Adoration of the Shepherds|their Adoration]], inviting to follow their example. The first line, "'''{{lang|de|Kommet, ihr Hirten, ihr Männer und Fraun|italic=no}}'''", addresses shepherds, men, and women.
+
+== History ==
+The text of "{{lang|de|Kommet, ihr Hirten|italic=no}}" was derived from a Czech carol, "{{lang|cs|Nesem vám noviny|lit=Bringing the news|italic=no}}".<ref name="Parent" />{{rp|34}}<ref name="Radio Prag" /> The German text was written as a free translation from the Czech original by [[Carl Riedel]] in [[Leipzig]].<ref name="Parent" />{{rp|34}} It was first published under the title ''{{lang|de|Die Engel und die Hirten|italic=no}}'' (The Angels and the Shepherds) in 1870 in his collection {{lang|de|Altböhmische Gesänge für gemischten Chor}} (Old-Bohemian chants for mixed choir).<ref name="Parent" />{{rp|34}} The song is in the tradition of shepherd songs, derived from the [[Annunciation to the shepherds]] and the [[Adoration of the Shepherds]] from the [[Gospel of Luke]] (Luke 2:8-20).<ref name="Parent" />{{rp|34}} Riedel's version is suited for a broad public.<ref>[[Ingeborg Weber-Kellermann]]: ''Das Buch der Weihnachtslieder''. 10th edition. Atlantis, Zürich 2003, {{ISBN|3-254-08213-3}}, pp. 110–111.</ref>
+
+The song is still popular. It is included in the Protestant hymnal ''[[Evangelisches Gesangbuch]]'' as EG 48,<ref name="Parent" /> and in some regional sections of the Catholic hymnal ''[[Gotteslob (1975)|Gotteslob]]'' of 1975 and its second edition, the ''[[Gotteslob]]'' of 2013.<ref name="Parent" />{{rp|34}}
+
+In English, the song became known as "Come, All Ye Shepherds", translated by Mari Ruef Hofer in 1912.<ref>{{Cite web |url=http://cyberhymnal.org/htm/c/o/comeayes.htm |title=Come, All Ye Shepherds |access-date=2019-12-08 |archive-url=https://web.archive.org/web/20140328215723/http://cyberhymnal.org/htm/c/o/comeayes.htm |archive-date=2014-03-28 |url-status=dead }} bei cyberhymnal.org</ref><ref>[http://www.carols.org.uk/a09-come-all-ye-shepherds.htm ''Come, All Ye Shepherds''] bei carols.org.uk</ref>
+
+== Text ==
+The Czech song "{{lang|cs|Nesem vám noviny|italic=no}}" (Bringing the news) has five [[stanza]]s.<ref name="Radio Prag" /> Riedel wrote a version in three stanzas of five lines each, rhyming in pairs with a concluding short last line. The beginning is "{{lang|de|Kommet, ihr Hirten, ihr Männer und Fraun|italic=no}}" (Come, you shepherds, men and women).<ref name="Parent" />{{rp|34}}
+
+<poem lang="de" style="float:left;">Kommet, ihr Hirten, ihr Männer und Fraun,
+Kommet, das liebliche Kindlein zu schaun,
+Christus, der Herr, ist heute geboren,
+Den Gott zum Heiland euch hat erkoren.
+Fürchtet euch nicht!
+
+Lasset uns sehen in Bethlehems Stall,
+Was uns verheißen der himmlische Schall;
+Was wir dort finden, lasset uns künden,
+Lasset uns preisen in frommen Weisen:
+Halleluja!
+
+Wahrlich, die Engel verkündigen heut
+Bethlehems Hirtenvolk gar große Freud:
+Nun soll es werden Friede auf Erden,
+Den Menschen allen ein Wohlgefallen:
+Ehre sei Gott!</poem>
+<poem style="margin-left:2em; float:left;">Come, all ye shepherds, ye children of earth,
+Come ye, bring greetings to yon heavenly birth.
+For Christ the Lord to all men is given,
+To be our Savior sent down from heaven:
+Come, welcome Him!
+
+Hasten then, hasten to Bethlehem's stall,
+There to see heaven descend to us all.
+With holy feeling, there humbly kneeling,
+We will adore Him, bow down before Him,
+Worship the King.
+
+Angels and shepherds together we go
+Seeking the Savior from all earthly woe;
+While angels, winging, His praise are singing,
+Heaven's echoes ringing, peace on earth bringing,
+Good will to men.</poem>{{clear|left}}
+
+== Melody ==
+In 1847, the melody was first published in the collection {{lang|cs|Katolicky kancionál}} in [[Olmütz]].<ref name="Parent" /> Manuscripts are not dated but seem to stem from the first half of the 19th century.<ref name="Ameln">[[Konrad Ameln]]: ''Altböhmische Weihnachtslieder.'' In: ''{{ill|Jahrbuch für Liturgik und Hymnologie|de}}'' 21 (1977), {{ISSN|0075-2681}}, {{pp.|162|165}}.</ref> It is a [[Drone (music)|bordun]] melody similar to folk music melodies.<ref>[[Ernst Anschütz]]: ''Musikalisches Schulgesangbuch.'' Heft 1. Reclam, Leipzig 1824, Nr. 86, p. 33 ([http://diglib.hab.de/wdb.php?dir=drucke/un-17-1b&pointer=42 Digitalisat] [[Herzog August Bibliothek]])</ref>
+
+<score sound="1" raw="1">
+\header { tagline = ##f }
+\layout { indent = 0
+  \context { \Score \remove "Bar_number_engraver" }
+  \context { \Voice \consists "Melody_engraver"}
+}
+
+global = { \key f \major \numericTimeSignature \time 3/4 }
+
+sopranoVoice = \relative c'' << {
+  \global \autoBeamOff \set midiInstrument = "flute" \set Score.tempoHideNote = ##t \tempo 4 = 102
+  \repeat volta 2 { <c a> <c a>8 [(<a f>)] <d bes> [(<bes g>)] | <c a>4 <c a>8 [(<a f>)] <d bes> [(<bes g>)] |
+    <c a>4 << { \voiceOne a8 [(c)] g [(a)] | f2. } \new Voice { \voiceTwo f4 e | f2. } >> | \oneVoice }
+  f4 a8 f << { \voiceOne a c } \new Voice { \voiceTwo e,4 } >> | \oneVoice <f d>4 <a c,>8 f g c, |
+  f4 a8 f <a e> c | <f, d>4 a8 f <g e> c, |
+  \tempo 4 = 82 << { \voiceOne c'4 a8 [(c)] g [(a)] } \new Voice { \voiceTwo <f c>2 e4 } >> | \oneVoice f2 r4 \bar "|."
+} >>
+
+verse =
+  \lyricmode {
+  Kom -- met,_ ihr_ Hir -- ten,_ ihr_ Män -- ner_ und_ Fraun,
+  Chri -- stus, der Herr, ist heu -- te ge -- bo -- ren,
+  Den Gott zum Hei -- land euch hat er -- ko -- ren.
+  Fürch -- tet__ euch__ nicht!
+  }
+verseR = \lyricmode { Kom -- met,_ das_ lieb -- li_ -- che_ Kind -- lein_ zu_ schaun, }
+
+left = \relative c { \set midiInstrument = "clarinet"
+  \global
+  \repeat volta 2 {f,8 c' f4 <f bes,> | f,8 c' f4 <f bes,> |
+    f,8 c' f4 <bes c,> | << { \voiceOne a4 bes g } \new Voice { \voiceTwo f2. } >> | }
+  \oneVoice r4 d' c | bes f e | <a d,>2 <a c,>4 | <a d,>2 <bes c,>4 | a,8 bes c4 <c bes'> | <a' f> f, r4 \bar "|."
+}
+
+\score {
+  \new PianoStaff <<
+    \new Staff = "right" <<
+      \new Voice = "sopVoice" { << \sopranoVoice >> }
+    >>
+    \new Lyrics = "lycontextI" \with { alignAboveContext = #"right" }
+    \new Lyrics = "lycontextII" \with { alignAboveContext = #"right" }
+    \context Lyrics = "lycontextI"
+      { \lyricsto "sopVoice" { \verse } }
+    \context Lyrics = "lycontextII"
+      { \lyricsto "sopVoice" { \verseR } }
+    \new Staff = "left" <<
+      \clef bass
+      \left
+    >>
+  >>
+  \layout { }
+}
+\score { \unfoldRepeats { << \sopranoVoice \\ \left >> }
+  \midi {
+  \context { \Score midiChannelMapping = #'instrument }
+  \context { \Staff \remove "Staff_performer" }
+  \context { \Voice \consists "Staff_performer" }
+  }
+}
+</score>
+<!--
+Eine alternative Melodie zu Carl Riedels Text komponierte Hermann Tromsdorf 1968.<ref>Hildegard Meyberg (Hrsg.): ''Laßt uns singen in der Weihnachtszeit.'' Auer, Donauwörth 1985, ISBN 3-403-01602-1, S. 134.</ref>-->
+
+==See also==
+* [[List of Christmas carols]]
+
+== References ==
+{{reflist
+| refs =
+
+<ref name="Parent">{{cite book
+| last = Parent
+| first = Ulrich
+| last2 = Rößler
+| first2 = Martin <!-- {{ill|Martin Rößler|de}}: -->
+| editor-last = Hahn
+| editor-first = Gerhard
+| editor-last2 = Henkys
+| editor-first2 = Jürgen
+| url = https://books.google.com/books?id=hNJZ9v-hSf4C&pg=PA34
+| title = 48 – Kommet, ihr Hirten, ihr Männer und Fraun
+| work = Liederkunde zum Evangelischen Gesangbuch
+| publisher = [[Vandenhoeck & Ruprecht]]
+| location = [[Göttingen]]
+| year = 2001
+| isbn = 3-525-50321-0
+| pages = 34–36
+| language = de
+}}</ref>
+
+<ref name="Radio Prag">{{cite web
+| url = https://archiv.radio.cz/en/static/christmas/carols/nesem-vam-noviny
+| title = Christmas / Nesem vám noviny
+| website = [[Radio Prague]]
+| year = 2001
+| language = cs
+}}</ref>
+
+}}
+
+== External links ==
+* [https://ingeb.org/spiritua/kommetih.html "Kommet, ihr Hirten"], text and melody (MIDI), ingeb.org
+* [https://www.lieder-archiv.de/kommet_ihr_hirten-notenblatt_200038.html "Kommet, ihr Hirten", Carl Riedel, Altböhmisches Weihnachtslied], lieder-archiv.de
+* [https://www.liederprojekt.org/lied31669.html "Kommet, ihr Hirten"], Liederprojekt.org ([[SWR2]] and [[Carus-Verlag]])
+* [https://www.evangeliums.net/lieder/lied_kommet_ihr_hirten_ihr_maenner_und_fraun.html "Kommet, ihr Hirten"], evangeliums.net
+
+{{authority control}}
+
+[[Category:German-language Christmas carols]]
+[[Category:19th-century hymns in German]]

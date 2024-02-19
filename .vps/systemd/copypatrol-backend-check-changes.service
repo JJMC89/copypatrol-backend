@@ -1,0 +1,17 @@
+[Unit]
+Description=copypatrol backend check changes daemon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+EnvironmentFile=/etc/copypatrol-env.sh
+ExecStart=/var/www/.venv/bin/copypatrol-backend check-changes -log:check-changes.log --limit 1000
+ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != 0 ]; then python3 /var/www/copypatrol-backend/.vps/bin/failure-mailer.py %n %H; fi'
+Restart=always
+RestartSec=5
+StartLimitInterval=0
+SyslogIdentifier=copypatrol-backend-check-changes
+
+[Install]
+WantedBy=multi-user.target

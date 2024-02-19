@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import os.path
+import shutil
+
+import pymysql
+
+
+CONFIG = ".copypatrol.ini"
+
+
+def _opener(path: str, flags: int, /) -> int:
+    return os.open(path, flags, mode=0o600)
+
+
+def create_config() -> None:
+    bak = f"{CONFIG}.testing.setup.bak"
+    if os.path.isfile(CONFIG):
+        if not os.path.isfile(bak):
+            os.rename(CONFIG, bak)
+        else:
+            os.remove(CONFIG)
+    shutil.copyfile("testing/unit/config.ini", CONFIG)
+
+
+def create_database() -> None:
+    if "mysql" not in os.environ["CPB_DB_DRIVERNAME"]:
+        return
+    with (
+        pymysql.connect(
+            host=os.environ["CPB_DB_HOST"],
+            user=os.environ["CPB_DB_USERNAME"],
+            password=os.environ["CPB_DB_PASSWORD"],
+            port=int(os.environ["CPB_DB_PORT"]),
+        ) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute(f"DROP DATABASE {os.environ['CPB_DB_DATABASE']}")
+        cursor.execute(
+            f"""\
+CREATE DATABASE {os.environ['CPB_DB_DATABASE']}
+DEFAULT CHARACTER SET = utf8mb4
+"""
+        )
+        connection.commit()
+
+
+def main(*args: str) -> int:
+    create_config()
+    create_database()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

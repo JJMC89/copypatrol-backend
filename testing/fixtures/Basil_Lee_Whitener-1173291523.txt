@@ -1,0 +1,58 @@
+{{short description|American politician}}
+{{Infobox officeholder
+| name=Basil Lee Whitener
+| image name=BasilLeeWhitener.jpg
+|office=Member of the<br>[[United States House of Representatives|U.S. House of Representatives]]<br>from [[North Carolina]]
+| term_start=January 3, 1957
+| term_end=January 3, 1969
+| predecessor=[[Woodrow W. Jones]]
+| successor=[[Jim Broyhill]]
+| constituency=[[United States House of Representatives, North Carolina District 11|11th District]] (1957-1963) <br> [[United States House of Representatives, North Carolina District 10|10th District]] (1963-1969)
+| party=[[United States Democratic Party|Democratic Party]]
+| birth_date={{birth date|1915|05|14}}
+| birth_place=[[York County, South Carolina]]
+| death_date={{death date and age|1989|03|20|1915|05|14}}
+| death_place=[[Gastonia, North Carolina]]
+| spouse=
+| children=
+| religion=
+| occupation= 
+| residence= 
+| alma_mater= [[Rutherford College, North Carolina|Rutherford College]] <br>[[University of South Carolina]] <br>[[Duke University Law School]]
+}}
+'''Basil Lee Whitener''' (May 14, 1915 – March 20, 1989) was a [[Democratic Party (United States)|Democratic]] [[United States House of Representatives|U.S. Representative]] from [[North Carolina]] between 1957 and 1969.
+
+Whitener was born in [[York County, South Carolina]] on May 14, 1915, and was educated in the public schools of [[Gaston County, North Carolina]]. He graduated from [[Lowell High School (Lowell, North Carolina)|Lowell High School]] in 1931 and from [[Rutherford College, North Carolina|Rutherford College]] in 1933, attending the [[University of South Carolina]] from 1933 to 1935 and graduating from [[Duke University Law School]] in 1937. He was admitted to the North Carolina bar in 1937 and commenced practice of law in [[Gastonia, North Carolina]].
+
+In 1941 Whitener was elected to the [[North Carolina House of Representatives]] and was renominated in 1943 but resigned to enter the [[United States Navy]]. He served as a gunnery officer until November 1945, leaving with a rank of lieutenant. Whitener was appointed solicitor, fourteenth solicitorial district, in January 1946 and elected in November 1946, reelected in 1950 and 1954, and served until December 31, 1956. In 1948, he was a delegate to the Democratic National Convention.
+
+Whitener was elected as a [[Democratic Party (United States)|Democrat]] to the [[85th United States Congress|Eighty-fifth]] and to the five succeeding Congresses (January 3, 1957 &ndash; January 3, 1969); he was an unsuccessful candidate for reelection in 1968 to the [[91st United States Congress|Ninety-first Congress]] and an unsuccessful candidate for election in 1970 to the [[92nd United States Congress|Ninety-second Congress]]. He resumed the practice of law.
+
+In 1966, Whitener unsuccessfully introduced an amendment to a bill to make Title VI of the [[Civil Rights Act of 1964]] inoperative.<ref>{{cite book |year=2008 |last=Perlstein |first=Rick |author-link=Rick Perlstein |title=Nixonland: The Rise of a President and the Fracturing of America |at=Chapter 6, p. 134 |url=https://books.google.com/books?id=dM_enWzoghoC&pg=PA134#v=onepage&q&f=false |url-status=live |archive-url=https://archive.today/2023.09.01-140059/https://books.google.com/books?id=dM_enWzoghoC&pg=PA134%23v=onepage&q&f=false |archive-date=2023-09-01 |publisher=Scribner |quote=On August 9, the twelfth day of debate in the full House on the civil rights bill, a North Carolina congressman by the apt name of Basil Whitener introduced an amendment to moot Title VI of the 1964 Civil Rights Act outright (Whitener had earlier whined of an amendment offering relief for Negroes injured or intimidated while voting, "Why cannot a person who is injured or intimidated be a white person for once?"). }}</ref>
+
+Whitener was a resident of [[Gastonia, North Carolina]] until his death there on March 20, 1989.
+
+==References==
+<references/>
+
+==External links==
+{{Portal|Biography}}
+{{CongBio|W000410}}
+*{{Find a Grave|8059913|Basil Lee Whitener}}
+{{Clear}}
+{{s-start}}
+{{s-par|us-hs}}
+{{US House succession box | state=North Carolina | district=11 | before=[[Woodrow W. Jones]] | after=[[Roy A. Taylor]] | years=January 3, 1957 – January 3, 1969}}
+{{US House succession box | state=North Carolina | district=10 | before=[[Charles R. Jonas]] | after=[[Jim Broyhill]] | years=January 3, 1963 – January 3, 1969}}
+{{s-end}}
+
+{{Authority control}}
+
+{{DEFAULTSORT:Whitener, Basil Lee}}
+[[Category:1915 births]]
+[[Category:1989 deaths]]
+[[Category:University of South Carolina alumni]]
+[[Category:People from York County, South Carolina]]
+[[Category:People from Gastonia, North Carolina]]
+[[Category:Democratic Party members of the United States House of Representatives from North Carolina]]
+[[Category:20th-century American politicians]]
