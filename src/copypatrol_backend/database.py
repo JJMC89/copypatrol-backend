@@ -22,6 +22,7 @@ from sqlalchemy import (
     TypeDecorator,
     and_,
     create_engine,
+    func,
     select,
 )
 from sqlalchemy.orm import (
@@ -413,3 +414,50 @@ def queued_diffs_by_status(
         .limit(limit)
     )
     return session.scalars(stmt).all()
+
+
+def diff_count(
+    session: Session,
+    table_class: type[DiffMixin],
+    /,
+    *,
+    status: Status | list[Status] | None = None,
+) -> int:
+    stmt = select(func.count()).select_from(table_class)
+    if status is not None:
+        if isinstance(status, Status):
+            status = [status]
+        stmt = stmt.where(table_class.status.in_(status))
+    res = session.scalar(stmt)
+    assert res is not None
+    return res
+
+
+def max_diff_timestamp(
+    session: Session,
+    table_class: type[DiffMixin],
+    /,
+    *,
+    status: Status | list[Status] | None = None,
+) -> Timestamp:
+    stmt = select(func.max(table_class.status_timestamp))
+    if status is not None:
+        if isinstance(status, Status):
+            status = [status]
+        stmt = stmt.where(table_class.status.in_(status))
+    return session.scalar(stmt)
+
+
+def min_diff_timestamp(
+    session: Session,
+    table_class: type[DiffMixin],
+    /,
+    *,
+    status: Status | list[Status] | None = None,
+) -> Timestamp:
+    stmt = select(func.min(table_class.status_timestamp))
+    if status is not None:
+        if isinstance(status, Status):
+            status = [status]
+        stmt = stmt.where(table_class.status.in_(status))
+    return session.scalar(stmt)

@@ -16,20 +16,24 @@ UUID = uuid.uuid4()
 
 @pytest.fixture
 def diffs_data(request, db_session):
-    sql_dct = {
-        k: v.encode() if isinstance(v, str) else v
-        for k, v in request.param.items()
-    }
-    cols = ", ".join(sql_dct)
-    vals = ", ".join(f":{key}" for key in sql_dct)
-    stmt = text(f"INSERT INTO `diffs_queue` ({cols}) VALUES ({vals})")
-    db_session.execute(stmt, sql_dct)
+    if isinstance(request.param, tuple):
+        dcts = request.param
+    else:
+        dcts = (request.param,)
+    for dct in dcts:
+        sql_dct = {
+            k: v.encode() if isinstance(v, str) else v for k, v in dct.items()
+        }
+        cols = ", ".join(sql_dct)
+        vals = ", ".join(f":{key}" for key in sql_dct)
+        stmt = text(f"INSERT INTO `diffs_queue` ({cols}) VALUES ({vals})")
+        db_session.execute(stmt, sql_dct)
     db_session.commit()
     yield
 
 
 def test_diff_from_queueddiff():
-    rev_timestamp = pywikibot.Timestamp.utcnow()
+    rev_timestamp = Timestamp.utcnow()
     diff = database.QueuedDiff(
         project="wikipedia",
         lang="es",
@@ -81,7 +85,7 @@ def test_diff_properties():
         page_title="Examplé",
         rev_id=1000,
         rev_parent_id=1001,
-        rev_timestamp=pywikibot.Timestamp.utcnow(),
+        rev_timestamp=Timestamp.utcnow(),
         rev_user_text="Example",
     )
     site = pywikibot.Site("es", "wikipedia")
@@ -181,3 +185,169 @@ def test_queued_diffs_by_status(db_session, diffs_data, status):
         delta=datetime.timedelta(hours=-1),
     )
     assert len(result) == 0
+
+
+@pytest.mark.parametrize(
+    "diffs_data",
+    [
+        tuple(
+            {
+                "project": "wikipedia",
+                "lang": "en",
+                "page_namespace": 0,
+                "page_title": "Diff_count",
+                "rev_id": 4000 + status,
+                "rev_parent_id": 4000,
+                "rev_timestamp": "20220101010101",
+                "rev_user_text": "Example",
+                "status": status,
+                "status_timestamp": Timestamp.utcnow().totimestampformat(),
+            }
+            for status in range(-4, 0)
+        )
+    ],
+    indirect=["diffs_data"],
+)
+def test_diff_count(db_session, diffs_data):
+    assert database.diff_count(db_session, database.QueuedDiff) == 4
+    for status in range(-4, 0):
+        assert (
+            database.diff_count(
+                db_session,
+                database.QueuedDiff,
+                status=database.Status(status),
+            )
+            == 1
+        )
+        assert (
+            database.diff_count(
+                db_session,
+                database.QueuedDiff,
+                status=[database.Status(status), database.Status.READY],
+            )
+            == 1
+        )
+
+
+@pytest.mark.parametrize(
+    "table_class",
+    [database.Diff, database.QueuedDiff],
+)
+def test_diff_count_empty(db_session, table_class):
+    assert database.diff_count(db_session, table_class) == 0
+
+
+@pytest.mark.parametrize(
+    "diffs_data",
+    [
+        (
+            {
+                "project": "wikipedia",
+                "lang": "en",
+                "page_namespace": 0,
+                "page_title": "Max_min_diff_timestamp",
+                "rev_id": 5001,
+                "rev_parent_id": 5000,
+                "rev_timestamp": "20220101010101",
+                "rev_user_text": "Example",
+                "status": -1,
+                "status_timestamp": "20220101010101",
+            },
+            {
+                "project": "wikipedia",
+                "lang": "en",
+                "page_namespace": 0,
+                "page_title": "Max_min_diff_timestamp",
+                "rev_id": 5002,
+                "rev_parent_id": 5000,
+                "rev_timestamp": "20220101010101",
+                "rev_user_text": "Example",
+                "status": -2,
+                "status_timestamp": "20220101010202",
+            },
+            {
+                "project": "wikipedia",
+                "lang": "en",
+                "page_namespace": 0,
+                "page_title": "Max_min_diff_timestamp",
+                "rev_id": 5003,
+                "rev_parent_id": 5000,
+                "rev_timestamp": "20220101010101",
+                "rev_user_text": "Example",
+                "status": -3,
+                "status_timestamp": "20220101010303",
+            },
+        )
+    ],
+    indirect=True,
+)
+def test_max_min_diff_timestamp(db_session, diffs_data):
+    _1 = Timestamp.fromisoformat("2022-01-01T01:01:01")
+    _2 = Timestamp.fromisoformat("2022-01-01T01:02:02")
+    _3 = Timestamp.fromisoformat("2022-01-01T01:03:03")
+    assert database.max_diff_timestamp(db_session, database.QueuedDiff) == _3
+    assert (
+        database.max_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.PENDING,
+        )
+        == _1
+    )
+    assert (
+        database.max_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.UPLOADED,
+        )
+        == _2
+    )
+    assert (
+        database.max_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.CREATED,
+        )
+        == _3
+    )
+    assert (
+        database.max_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=[database.Status.PENDING, database.Status.UPLOADED],
+        )
+        == _2
+    )
+    assert database.min_diff_timestamp(db_session, database.QueuedDiff) == _1
+    assert (
+        database.min_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.PENDING,
+        )
+        == _1
+    )
+    assert (
+        database.min_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.UPLOADED,
+        )
+        == _2
+    )
+    assert (
+        database.min_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=database.Status.CREATED,
+        )
+        == _3
+    )
+    assert (
+        database.min_diff_timestamp(
+            db_session,
+            database.QueuedDiff,
+            status=[database.Status.PENDING, database.Status.UPLOADED],
+        )
+        == _1
+    )
