@@ -50,9 +50,61 @@ def application_factory() -> flask.Flask:
     def empty() -> ResponseReturnValue:
         return {}
 
-    @app.route("/heartbeat")
-    def heartbeat() -> ResponseReturnValue:
-        return {"status": "healthy"}
+    @app.route("/healthz")
+    def healthz() -> ResponseReturnValue:
+        with database.create_sessionmaker().begin() as session:
+            queue_length = database.diff_count(
+                session,
+                database.QueuedDiff,
+            )
+            if queue_length > 0:
+                queue: tca.JSON = {
+                    "length": queue_length,
+                    "newest": database.max_diff_timestamp(
+                        session,
+                        database.QueuedDiff,
+                    ).isoformat(),
+                    "oldest": database.min_diff_timestamp(
+                        session,
+                        database.QueuedDiff,
+                    ).isoformat(),
+                }
+            else:
+                queue = {
+                    "length": queue_length,
+                    "newest": None,
+                    "oldest": None,
+                }
+            ready_length = database.diff_count(
+                session,
+                database.Diff,
+                status=database.Status.READY,
+            )
+            if ready_length > 0:
+                ready: tca.JSON = {
+                    "length": ready_length,
+                    "newest": database.max_diff_timestamp(
+                        session,
+                        database.Diff,
+                        status=database.Status.READY,
+                    ).isoformat(),
+                    "oldest": database.min_diff_timestamp(
+                        session,
+                        database.Diff,
+                        status=database.Status.READY,
+                    ).isoformat(),
+                }
+            else:
+                ready = {
+                    "length": ready_length,
+                    "newest": None,
+                    "oldest": None,
+                }
+        return {
+            "queue": queue,
+            "ready": ready,
+            "status": "up",
+        }
 
     @app.route("/tca-webhook", methods=["POST"])
     @requires_tca_webhook_headers
