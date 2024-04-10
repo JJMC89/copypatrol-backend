@@ -69,10 +69,10 @@ def clean_wikitext(text: str, /, *, site: APISite) -> str:
             for param in keep_params:
                 with suppress(ValueError):
                     tpl.remove(param)
-    # remove references of less than 50 words
-    for tag in wikicode.ifilter_tags():
-        if tag.tag.lower() not in ("ref", "references"):
-            continue
+    # remove block quotes and references of less than 50 words
+    for tag in wikicode.ifilter_tags(
+        matches=lambda x: x.tag.lower() in ("blockquote", "ref", "references"),
+    ):
         contents = tag.contents.strip_code(keep_template_params=True).strip()
         if len(contents.split(" ")) < 50:
             with suppress(ValueError):
