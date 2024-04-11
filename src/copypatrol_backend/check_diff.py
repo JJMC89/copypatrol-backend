@@ -85,7 +85,7 @@ def added_revision_text(old: str, new: str, /, *, site: APISite) -> str:
     return "\n".join(
         line
         for op, _, _, new_start, new_end in sm.get_opcodes()
-        if op in ("insert", "replace")
+        if op == "insert"
         if new_end - new_start > 50
         for line in "".join(new[new_start:new_end]).strip(" ").splitlines()
         if not line.strip() or line.strip() not in old

@@ -101,7 +101,7 @@ def test_added_revision_text(mock_filename_regex):
         ),
         pytest.param(
             "foo bar" * 100,
-            f'{"baz" * 500} "short quote"',
+            f'{"foo bar" * 100} {"baz" * 500} "short quote"',
             "another edit summary",
             [],
             "baz" * 500,
@@ -109,7 +109,7 @@ def test_added_revision_text(mock_filename_regex):
         ),
         pytest.param(
             "foo bar" * 100,
-            f'"{"baz " * 500}"',
+            f'{"foo bar" * 100} "{"baz " * 500}"',
             "another edit summary",
             [],
             f'"{"baz " * 500}"',
@@ -149,7 +149,7 @@ def test_added_revision_text(mock_filename_regex):
         ),
         pytest.param(
             "foo bar" * 100,
-            "baz" * 500,
+            f'{"foo bar" * 100} {"baz" * 500}',
             "",
             [],
             "baz" * 500,
