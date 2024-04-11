@@ -56,19 +56,6 @@ def clean_wikitext(text: str, /, *, site: APISite) -> str:
     for link in wikicode.ifilter_external_links():
         with suppress(ValueError):
             wikicode.replace(link, link.title or "")
-    # remove template parameter values of less than 50 words
-    for tpl in reversed(wikicode.filter_templates()):
-        keep_params = []
-        for param in tpl.params:
-            if len(param.value.strip_code().strip().split(" ")) >= 50:
-                keep_params.append(param)
-        if len(keep_params) == 0:
-            with suppress(ValueError):
-                wikicode.remove(tpl)
-        else:
-            for param in keep_params:
-                with suppress(ValueError):
-                    tpl.remove(param)
     # remove block quotes and references of less than 50 words
     for tag in wikicode.ifilter_tags(
         matches=lambda x: x.tag.lower() in ("blockquote", "ref", "references"),
