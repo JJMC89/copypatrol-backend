@@ -96,11 +96,12 @@ def added_revision_text(old: str, new: str, /, *, site: APISite) -> str:
     new = clean_wikitext(new, site=site)
     sm = difflib.SequenceMatcher(None, old, new)
     return "\n".join(
-        part.strip(" ")
+        line
         for op, _, _, new_start, new_end in sm.get_opcodes()
         if op in ("insert", "replace")
         if new_end - new_start > 50
-        if (part := "".join(new[new_start:new_end])) not in old
+        for line in "".join(new[new_start:new_end]).strip(" ").splitlines()
+        if not line.strip() or line.strip() not in old
     ).strip()
 
 
