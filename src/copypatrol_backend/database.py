@@ -3,7 +3,7 @@ from __future__ import annotations
 import datetime
 import os
 from enum import IntEnum
-from typing import TYPE_CHECKING, Self, Union
+from typing import TYPE_CHECKING, Self, TypeVar, Union
 from uuid import UUID
 
 import pywikibot
@@ -74,11 +74,14 @@ UnsignedInteger = Integer().with_variant(
 
 
 class Status(IntEnum):
+    UNKNOWN = -99
     UNSUBMITTED = -4
     CREATED = -3
     UPLOADED = -2
     PENDING = -1
     READY = 0
+    FIXED = 1
+    NO_ACTION = 2
 
 
 class BinaryDecoratorBase(TypeDecorator[str]):
@@ -328,6 +331,9 @@ class Source(TableBase, kw_only=True):
     percent: Mapped[float] = mapped_column(UnsignedFloat)
 
 
+DiffT = TypeVar("DiffT", bound=DiffMixin)
+
+
 def add_revision(
     *,
     session: Session,
@@ -381,6 +387,33 @@ def create_tables() -> None:
     TableBase.metadata.create_all(_create_engine(echo=True), checkfirst=True)
 
 
+def diffs_by_status(
+    session: Session,
+    table_class: type[DiffT],
+    status: Status | list[Status],
+    /,
+    *,
+    delta: datetime.timedelta | None = None,
+    limit: int | None = None,
+) -> Sequence[DiffT]:
+    if isinstance(status, Status):
+        status = [status]
+    if delta is None:
+        delta = datetime.timedelta()
+    stmt = (
+        select(table_class)
+        .where(
+            and_(
+                table_class.status.in_(status),
+                table_class.status_timestamp <= Timestamp.utcnow() + delta,
+            )
+        )
+        .order_by(table_class.rev_timestamp.desc())
+        .limit(limit)
+    )
+    return session.scalars(stmt).all()
+
+
 def queued_diff_from_submission_id(
     session: Session,
     submission_id: UUID,
@@ -390,35 +423,9 @@ def queued_diff_from_submission_id(
     return session.scalars(stmt).one_or_none()
 
 
-def queued_diffs_by_status(
-    session: Session,
-    status: Status | list[Status],
-    /,
-    *,
-    delta: datetime.timedelta | None = None,
-    limit: int | None = None,
-) -> Sequence[QueuedDiff]:
-    if isinstance(status, Status):
-        status = [status]
-    if delta is None:
-        delta = datetime.timedelta()
-    stmt = (
-        select(QueuedDiff)
-        .where(
-            and_(
-                QueuedDiff.status.in_(status),
-                QueuedDiff.status_timestamp <= Timestamp.utcnow() + delta,
-            )
-        )
-        .order_by(QueuedDiff.rev_timestamp.desc())
-        .limit(limit)
-    )
-    return session.scalars(stmt).all()
-
-
 def diff_count(
     session: Session,
-    table_class: type[DiffMixin],
+    table_class: type[DiffT],
     /,
     *,
     status: Status | list[Status] | None = None,
@@ -435,7 +442,7 @@ def diff_count(
 
 def max_diff_timestamp(
     session: Session,
-    table_class: type[DiffMixin],
+    table_class: type[DiffT],
     /,
     *,
     status: Status | list[Status] | None = None,
@@ -450,7 +457,7 @@ def max_diff_timestamp(
 
 def min_diff_timestamp(
     session: Session,
-    table_class: type[DiffMixin],
+    table_class: type[DiffT],
     /,
     *,
     status: Status | list[Status] | None = None,

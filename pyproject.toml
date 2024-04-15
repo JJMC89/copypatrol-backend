@@ -73,7 +73,7 @@ license = "MIT"
 name = "copypatrol-backend"
 readme = "README.md"
 repository = "https://github.com/JJMC89/copypatrol-backend"
-version = "2024.4.11"
+version = "2024.4.15"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"

@@ -127,6 +127,43 @@ def test_add_revision(db_session):
 
 
 @pytest.mark.parametrize(
+    "diffs_data,status",
+    [
+        (
+            {
+                "project": "wikipedia",
+                "lang": "en",
+                "page_namespace": 0,
+                "page_title": "Records_by_status",
+                "rev_id": 3000 + status,
+                "rev_parent_id": 3000,
+                "rev_timestamp": "20220101010101",
+                "rev_user_text": "Example",
+                "status": status,
+                "status_timestamp": Timestamp.utcnow().totimestampformat(),
+            },
+            status,
+        )
+        for status in range(-4, 0)
+    ],
+    indirect=["diffs_data"],
+)
+def test_diffs_by_status(db_session, diffs_data, status):
+    result = database.diffs_by_status(
+        db_session, database.QueuedDiff, database.Status(status)
+    )
+    assert len(result) == 1
+    assert result[0].status is database.Status(status)
+    result = database.diffs_by_status(
+        db_session,
+        database.QueuedDiff,
+        [database.Status(status)],
+        delta=datetime.timedelta(hours=-1),
+    )
+    assert len(result) == 0
+
+
+@pytest.mark.parametrize(
     "diffs_data",
     [
         {
@@ -149,42 +186,6 @@ def test_queued_diff_from_submission_id(db_session, diffs_data):
     result = database.queued_diff_from_submission_id(db_session, UUID)
     assert result is not None
     assert result.submission_id == UUID
-
-
-@pytest.mark.parametrize(
-    "diffs_data,status",
-    [
-        (
-            {
-                "project": "wikipedia",
-                "lang": "en",
-                "page_namespace": 0,
-                "page_title": "Records_by_status",
-                "rev_id": 3000 + status,
-                "rev_parent_id": 3000,
-                "rev_timestamp": "20220101010101",
-                "rev_user_text": "Example",
-                "status": status,
-                "status_timestamp": Timestamp.utcnow().totimestampformat(),
-            },
-            status,
-        )
-        for status in range(-4, 0)
-    ],
-    indirect=["diffs_data"],
-)
-def test_queued_diffs_by_status(db_session, diffs_data, status):
-    result = database.queued_diffs_by_status(
-        db_session, database.Status(status)
-    )
-    assert len(result) == 1
-    assert result[0].status is database.Status(status)
-    result = database.queued_diffs_by_status(
-        db_session,
-        [database.Status(status)],
-        delta=datetime.timedelta(hours=-1),
-    )
-    assert len(result) == 0
 
 
 @pytest.mark.parametrize(
