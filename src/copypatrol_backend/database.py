@@ -411,7 +411,7 @@ def diffs_by_status(
         .order_by(table_class.rev_timestamp.desc())
         .limit(limit)
     )
-    return session.scalars(stmt).all()
+    return session.scalars(stmt).unique().all()
 
 
 def queued_diff_from_submission_id(
