@@ -1,0 +1,12 @@
+[Unit]
+Description=copypatrol backend update ready diffs timer
+Requires=copypatrol-backend-update-ready-diffs.service
+
+[Timer]
+AccuracySec=1 hour
+OnStartupSec=1 hour
+OnUnitInactiveSec=1 day
+Unit=copypatrol-backend-update-ready-diffs.service
+
+[Install]
+WantedBy=timers.target

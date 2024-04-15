@@ -50,8 +50,9 @@ def _check_diff(
 def check_changes(*, poolsize: int = 1, limit: int | None = None) -> None:
     sessionmaker = database.create_sessionmaker()
     with sessionmaker.begin() as session:
-        diffs = database.queued_diffs_by_status(
+        diffs = database.diffs_by_status(
             session,
+            database.QueuedDiff,
             [database.Status.UNSUBMITTED, database.Status.CREATED],
             limit=limit,
         )
@@ -103,8 +104,9 @@ def check_changes(*, poolsize: int = 1, limit: int | None = None) -> None:
 def generate_reports(*, delta: datetime.timedelta | None = None) -> None:
     api = tca.TurnitinCoreAPI()
     with database.create_sessionmaker().begin() as session:
-        for diff in database.queued_diffs_by_status(
+        for diff in database.diffs_by_status(
             session,
+            database.QueuedDiff,
             database.Status.UPLOADED,
             delta=delta,
         ):
@@ -120,8 +122,9 @@ def generate_reports(*, delta: datetime.timedelta | None = None) -> None:
 def check_reports(*, delta: datetime.timedelta | None = None) -> None:
     api = tca.TurnitinCoreAPI()
     with database.create_sessionmaker().begin() as session:
-        for diff in database.queued_diffs_by_status(
+        for diff in database.diffs_by_status(
             session,
+            database.QueuedDiff,
             database.Status.PENDING,
             delta=delta,
         ):
@@ -132,6 +135,19 @@ def check_reports(*, delta: datetime.timedelta | None = None) -> None:
                 pywikibot.exception()
                 continue
             api.handle_similarity_info(info=info, diff=diff)
+
+
+def update_ready_diffs(*, delta: datetime.timedelta | None = None) -> None:
+    with database.create_sessionmaker().begin() as session:
+        for diff in database.diffs_by_status(
+            session,
+            database.Diff,
+            database.Status.READY,
+            delta=delta,
+        ):
+            if diff.update_page() is None:
+                diff.status = database.Status.FIXED
+                diff.status_user_text = diff.site.username()
 
 
 def parse_script_args(*args: str) -> argparse.Namespace:
@@ -186,6 +202,13 @@ def parse_script_args(*args: str) -> argparse.Namespace:
         help=description,
         allow_abbrev=False,
     )
+    description = "update ready diffs for deletions and moves"
+    subparsers.add_parser(
+        "update-ready-diffs",
+        description=description,
+        help=description,
+        allow_abbrev=False,
+    )
     description = "setup database and (optionally) webhook"
     setup_subparser = subparsers.add_parser("setup", allow_abbrev=False)
     setup_subparser.add_argument(
@@ -207,6 +230,8 @@ def cli(*args: str) -> int:
         delta = datetime.timedelta(minutes=-30)
         check_reports(delta=delta)
         generate_reports(delta=delta)
+    elif parsed_args.arction == "update-ready-diffs":
+        update_ready_diffs(delta=datetime.timedelta(weeks=-1))
     elif parsed_args.action == "setup":
         database.create_tables()
         if parsed_args.webhook:
