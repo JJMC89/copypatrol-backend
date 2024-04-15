@@ -230,7 +230,7 @@ def cli(*args: str) -> int:
         delta = datetime.timedelta(minutes=-30)
         check_reports(delta=delta)
         generate_reports(delta=delta)
-    elif parsed_args.arction == "update-ready-diffs":
+    elif parsed_args.action == "update-ready-diffs":
         update_ready_diffs(delta=datetime.timedelta(weeks=-1))
     elif parsed_args.action == "setup":
         database.create_tables()
