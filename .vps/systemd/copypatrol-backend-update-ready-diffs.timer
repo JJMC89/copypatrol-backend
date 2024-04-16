@@ -3,9 +3,9 @@ Description=copypatrol backend update ready diffs timer
 Requires=copypatrol-backend-update-ready-diffs.service
 
 [Timer]
-AccuracySec=1 hour
-OnStartupSec=1 hour
-OnUnitInactiveSec=1 day
+AccuracySec=5 min
+OnStartupSec=5 min
+OnUnitInactiveSec=1 hour
 Unit=copypatrol-backend-update-ready-diffs.service
 
 [Install]
