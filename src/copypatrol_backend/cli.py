@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import multiprocessing.pool
+import operator
 
 import pywikibot
 from pywikibot.exceptions import InvalidTitleError
@@ -138,16 +139,23 @@ def check_reports(*, delta: datetime.timedelta | None = None) -> None:
 
 
 def update_ready_diffs(*, delta: datetime.timedelta | None = None) -> None:
-    with database.create_sessionmaker().begin() as session:
+    with database.create_sessionmaker()() as session:
         for diff in database.diffs_by_status(
             session,
             database.Diff,
             database.Status.READY,
             delta=delta,
+            op=operator.ge,
         ):
-            if diff.update_page() is None:
-                diff.status = database.Status.FIXED
-                diff.status_user_text = diff.site.username()
+            try:
+                res = diff.update_page()
+            except pywikibot.exceptions.Error:  # pragma: no cover
+                pywikibot.exception()
+            else:
+                if res is None:
+                    diff.status = database.Status.FIXED
+                    diff.status_user_text = diff.site.username()
+                session.commit()
 
 
 def parse_script_args(*args: str) -> argparse.Namespace:
