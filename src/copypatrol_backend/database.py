@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import datetime
+import operator
 import os
 from enum import IntEnum
-from typing import TYPE_CHECKING, Self, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Self, TypeVar, Union
 from uuid import UUID
 
 import pywikibot
@@ -38,11 +39,12 @@ from copypatrol_backend import wiki
 
 
 if TYPE_CHECKING:
-    from collections.abc import Sequence
+    from collections.abc import Callable, Sequence
 
     from pywikibot.site import APISite
     from sqlalchemy.engine import Engine
-    from sqlalchemy.orm import Session
+    from sqlalchemy.orm import InstrumentedAttribute, Session
+    from sqlalchemy.sql.expression import ColumnElement
 
 
 SidType = Union[str, UUID]
@@ -394,6 +396,10 @@ def diffs_by_status(
     /,
     *,
     delta: datetime.timedelta | None = None,
+    op: Callable[
+        [InstrumentedAttribute[Any], InstrumentedAttribute[Any]],
+        ColumnElement[bool],
+    ] = operator.le,
     limit: int | None = None,
 ) -> Sequence[DiffT]:
     if isinstance(status, Status):
@@ -405,7 +411,7 @@ def diffs_by_status(
         .where(
             and_(
                 table_class.status.in_(status),
-                table_class.status_timestamp <= Timestamp.utcnow() + delta,
+                op(table_class.status_timestamp, Timestamp.utcnow() + delta),
             )
         )
         .order_by(table_class.rev_timestamp.desc())
