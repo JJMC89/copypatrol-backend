@@ -79,7 +79,7 @@ version = "2024.4.16"
 python = ">=3.11,<4"
 cachetools = "5.3.3"
 flask = "3.0.2"
-gunicorn = "21.2.0"
+gunicorn = "22.0.0"
 mwparserfromhell = "0.6.6"
 pywikibot = {version = "9.0.0", extras = ["eventstreams", "mwoauth"]}
 pywikibot-extensions = "23.3.25"
