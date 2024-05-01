@@ -237,13 +237,13 @@ toml = ["tomli"]
 
 [[package]]
 name = "flask"
-version = "3.0.2"
+version = "3.0.3"
 description = "A simple framework for building complex web applications."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "flask-3.0.2-py3-none-any.whl", hash = "sha256:3232e0e9c850d781933cf0207523d1ece087eb8d87b23777ae38456e2fbe7c6e"},
-    {file = "flask-3.0.2.tar.gz", hash = "sha256:822c03f4b799204250a7ee84b1eddc40665395333973dfb9deebfe425fefcb7d"},
+    {file = "flask-3.0.3-py3-none-any.whl", hash = "sha256:34e815dfaa43340d1d15a5c3a02b8476004037eb4840b34910c6e21679d288f3"},
+    {file = "flask-3.0.3.tar.gz", hash = "sha256:ceb27b0af3823ea2737928a4d99d125a06175b8512c445cbd9a9ce200ef76842"},
 ]
 
 [package.dependencies]
@@ -503,9 +503,12 @@ files = [
     {file = "mwparserfromhell-0.6.6-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:59633d3cc09993af75ced8dfbd6800e1e38e64620851a095575621548448875c"},
     {file = "mwparserfromhell-0.6.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:007d0859e5467241b73c6e974df039a074609ce4e2b9df8c2263a8920554d032"},
     {file = "mwparserfromhell-0.6.6-cp311-cp311-win32.whl", hash = "sha256:dbe5976b1b524e26aa2eb71b6219960f2578f56b536c68e0a79deb63e3b7f710"},
+    {file = "mwparserfromhell-0.6.6-cp311-cp311-win_amd64.whl", hash = "sha256:063c1e79befd1f55d77c358e0f5006f5ecf88ddf218ff6af55188d686139330e"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:910d36bc70e8bea758380e75c12fd47626b295abec9f73a6099d8f937a649e77"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d2febd92a55a3f19b461833267726cb81429c3d6cb0006ad1691dfa849789e5d"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2b75fae6d01c8fda19dbf127175122d7aa2964ef6454690e6868bbc3d80a7bc1"},
+    {file = "mwparserfromhell-0.6.6-cp312-cp312-win32.whl", hash = "sha256:19e9a4bcd85707c83172405eb2a9a046eff9d38dd7f1a56a5e5ecbbfef4a640a"},
+    {file = "mwparserfromhell-0.6.6-cp312-cp312-win_amd64.whl", hash = "sha256:cdc46c115b2495d4025920b7b30a6885a96d2b797ccc4009bf3cc02940ae55d3"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-macosx_11_0_x86_64.whl", hash = "sha256:fd05481adc0806f4b8f8f8cb309ec56924b17ce386cb1c2f73919d8a012e6b16"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:03e03b8bec729af850457d045b04d0c9d3e296ff8bf66b455f754cccb29c3bea"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1d2422659abb29191a0fa096cf8bead837ac3ecd343065569b2acc7a84ecf866"},
@@ -548,13 +551,13 @@ files = [
 
 [[package]]
 name = "pluggy"
-version = "1.4.0"
+version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pluggy-1.4.0-py3-none-any.whl", hash = "sha256:7db9f7b503d67d1c5b95f59773ebb58a8c1c288129a88665838012cfb07b8981"},
-    {file = "pluggy-1.4.0.tar.gz", hash = "sha256:8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be"},
+    {file = "pluggy-1.5.0-py3-none-any.whl", hash = "sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669"},
+    {file = "pluggy-1.5.0.tar.gz", hash = "sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1"},
 ]
 
 [package.extras]
@@ -595,23 +598,23 @@ rsa = ["cryptography"]
 
 [[package]]
 name = "pytest"
-version = "8.1.1"
+version = "8.2.0"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pytest-8.1.1-py3-none-any.whl", hash = "sha256:2a8386cfc11fa9d2c50ee7b2a57e7d898ef90470a7a34c4b949ff59662bb78b7"},
-    {file = "pytest-8.1.1.tar.gz", hash = "sha256:ac978141a75948948817d360297b7aae0fcb9d6ff6bc9ec6d514b85d5a65c044"},
+    {file = "pytest-8.2.0-py3-none-any.whl", hash = "sha256:1733f0620f6cda4095bbf0d9ff8022486e91892245bb9e7d5542c018f612f233"},
+    {file = "pytest-8.2.0.tar.gz", hash = "sha256:d507d4482197eac0ba2bae2e9babf0672eb333017bcedaa5fb1a3d42c1174b3f"},
 ]
 
 [package.dependencies]
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 iniconfig = "*"
 packaging = "*"
-pluggy = ">=1.4,<2.0"
+pluggy = ">=1.5,<2.0"
 
 [package.extras]
-testing = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
+dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
 name = "pytest-cov"
@@ -695,13 +698,13 @@ pytest = ">=6.2.5"
 
 [[package]]
 name = "pywikibot"
-version = "9.0.0"
+version = "9.1.1"
 description = "Python MediaWiki Bot Framework"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "pywikibot-9.0.0-py3-none-any.whl", hash = "sha256:09b786b2159d6e443d8447fc56b5f9bfa5478fbb7f587487ac7b3f42ba4cd51a"},
-    {file = "pywikibot-9.0.0.tar.gz", hash = "sha256:82120dd4dd275a48c0eaa2a459faad928211e7b43cf6efe4110ad95e805e7317"},
+    {file = "pywikibot-9.1.1-py3-none-any.whl", hash = "sha256:6345ff458378aedd0c072cd021a0882b8f781d110c426ee6503aff54f5b8fb2a"},
+    {file = "pywikibot-9.1.1.tar.gz", hash = "sha256:0d8d4585c8d6243085267556060d00a30b980665fa45a6254e86e4b3e458c7cf"},
 ]
 
 [package.dependencies]
@@ -768,6 +771,7 @@ files = [
     {file = "PyYAML-6.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:bf07ee2fef7014951eeb99f56f39c9bb4af143d8aa3c21b1677805985307da34"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:855fb52b0dc35af121542a76b9a84f8d1cd886ea97c84703eaa6d88e37a2ad28"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:40df9b996c2b73138957fe23a16a4f0ba614f4c0efce1e9406a184b6d07fa3a9"},
+    {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a08c6f0fe150303c1c6b71ebcd7213c2858041a7e01975da3a99aed1e7a378ef"},
     {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6c22bec3fbe2524cde73d7ada88f6566758a8f7227bfbf93a408a9d86bcc12a0"},
     {file = "PyYAML-6.0.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8d4e9c88387b0f5c7d5f281e55304de64cf7f9c0021a3525bd3b1c542da3b0e4"},
     {file = "PyYAML-6.0.1-cp312-cp312-win32.whl", hash = "sha256:d483d2cdf104e7c9fa60c544d92981f12ad66a457afae824d146093b8c294c54"},
@@ -1021,4 +1025,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<4"
-content-hash = "fda975596a4aba51714717283197d9497a93949a0d9290761a9603552e6a7b1a"
+content-hash = "55efeb9fae58c5bef70bc9812c27be3474365f906ecdeb0666b08ff8dcad8fe9"
