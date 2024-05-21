@@ -83,7 +83,7 @@ gunicorn = "22.0.0"
 mwparserfromhell = "0.6.6"
 pywikibot = {version = "9.1.1", extras = ["eventstreams", "mwoauth"]}
 pywikibot-extensions = "23.3.25"
-requests = "2.31.0"
+requests = "2.32.1"
 sqlalchemy = {version = "2.0.29", extras = ["pymysql"]}
 urllib3 = "2.2.1"
 
