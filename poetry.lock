@@ -24,13 +24,13 @@ files = [
 
 [[package]]
 name = "certifi"
-version = "2024.6.2"
+version = "2024.7.4"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "certifi-2024.6.2-py3-none-any.whl", hash = "sha256:ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56"},
-    {file = "certifi-2024.6.2.tar.gz", hash = "sha256:3cd43f1c6fa7dedc5899d69d3ad0398fd018ad1a17fba83ddaf78aa46c747516"},
+    {file = "certifi-2024.7.4-py3-none-any.whl", hash = "sha256:c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90"},
+    {file = "certifi-2024.7.4.tar.gz", hash = "sha256:5a1e7645bc0ec61a09e26c36f6106dd4cf40c6db3a1fb6352b0244e7fb057c7b"},
 ]
 
 [[package]]
@@ -503,9 +503,12 @@ files = [
     {file = "mwparserfromhell-0.6.6-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:59633d3cc09993af75ced8dfbd6800e1e38e64620851a095575621548448875c"},
     {file = "mwparserfromhell-0.6.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:007d0859e5467241b73c6e974df039a074609ce4e2b9df8c2263a8920554d032"},
     {file = "mwparserfromhell-0.6.6-cp311-cp311-win32.whl", hash = "sha256:dbe5976b1b524e26aa2eb71b6219960f2578f56b536c68e0a79deb63e3b7f710"},
+    {file = "mwparserfromhell-0.6.6-cp311-cp311-win_amd64.whl", hash = "sha256:063c1e79befd1f55d77c358e0f5006f5ecf88ddf218ff6af55188d686139330e"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:910d36bc70e8bea758380e75c12fd47626b295abec9f73a6099d8f937a649e77"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d2febd92a55a3f19b461833267726cb81429c3d6cb0006ad1691dfa849789e5d"},
     {file = "mwparserfromhell-0.6.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2b75fae6d01c8fda19dbf127175122d7aa2964ef6454690e6868bbc3d80a7bc1"},
+    {file = "mwparserfromhell-0.6.6-cp312-cp312-win32.whl", hash = "sha256:19e9a4bcd85707c83172405eb2a9a046eff9d38dd7f1a56a5e5ecbbfef4a640a"},
+    {file = "mwparserfromhell-0.6.6-cp312-cp312-win_amd64.whl", hash = "sha256:cdc46c115b2495d4025920b7b30a6885a96d2b797ccc4009bf3cc02940ae55d3"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-macosx_11_0_x86_64.whl", hash = "sha256:fd05481adc0806f4b8f8f8cb309ec56924b17ce386cb1c2f73919d8a012e6b16"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:03e03b8bec729af850457d045b04d0c9d3e296ff8bf66b455f754cccb29c3bea"},
     {file = "mwparserfromhell-0.6.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1d2422659abb29191a0fa096cf8bead837ac3ecd343065569b2acc7a84ecf866"},
@@ -768,6 +771,7 @@ files = [
     {file = "PyYAML-6.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:bf07ee2fef7014951eeb99f56f39c9bb4af143d8aa3c21b1677805985307da34"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:855fb52b0dc35af121542a76b9a84f8d1cd886ea97c84703eaa6d88e37a2ad28"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:40df9b996c2b73138957fe23a16a4f0ba614f4c0efce1e9406a184b6d07fa3a9"},
+    {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a08c6f0fe150303c1c6b71ebcd7213c2858041a7e01975da3a99aed1e7a378ef"},
     {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6c22bec3fbe2524cde73d7ada88f6566758a8f7227bfbf93a408a9d86bcc12a0"},
     {file = "PyYAML-6.0.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8d4e9c88387b0f5c7d5f281e55304de64cf7f9c0021a3525bd3b1c542da3b0e4"},
     {file = "PyYAML-6.0.1-cp312-cp312-win32.whl", hash = "sha256:d483d2cdf104e7c9fa60c544d92981f12ad66a457afae824d146093b8c294c54"},
