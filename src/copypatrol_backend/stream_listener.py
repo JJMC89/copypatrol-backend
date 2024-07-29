@@ -39,7 +39,7 @@ def change_stream(
     *,
     since: datetime.datetime | None = None,
     total: int | None = None,
-) -> Generator[dict[str, Any], None, None]:
+) -> Generator[dict[str, Any]]:
     stream = EventStreams(
         streams="mediawiki.page_change.v1",
         since=since,
