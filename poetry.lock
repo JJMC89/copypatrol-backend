@@ -13,13 +13,13 @@ files = [
 
 [[package]]
 name = "cachetools"
-version = "5.3.3"
+version = "5.4.0"
 description = "Extensible memoizing collections and decorators"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "cachetools-5.3.3-py3-none-any.whl", hash = "sha256:0abad1021d3f8325b2fc1d2e9c8b9c9d57b04c3932657a72465447332c24d945"},
-    {file = "cachetools-5.3.3.tar.gz", hash = "sha256:ba29e2dfa0b8b556606f097407ed1aa62080ee108ab0dc5ec9d6a723a007d105"},
+    {file = "cachetools-5.4.0-py3-none-any.whl", hash = "sha256:3ae3b49a3d5e28a77a0be2b37dbcb89005058959cb2323858c2657c4a8cab474"},
+    {file = "cachetools-5.4.0.tar.gz", hash = "sha256:b8adc2e7c07f105ced7bc56dbb6dfbe7c4a00acce20e2227b3f355be89bc6827"},
 ]
 
 [[package]]
@@ -598,20 +598,20 @@ rsa = ["cryptography"]
 
 [[package]]
 name = "pytest"
-version = "8.2.2"
+version = "8.3.2"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pytest-8.2.2-py3-none-any.whl", hash = "sha256:c434598117762e2bd304e526244f67bf66bbd7b5d6cf22138be51ff661980343"},
-    {file = "pytest-8.2.2.tar.gz", hash = "sha256:de4bb8104e201939ccdc688b27a89a7be2079b22e2bd2b07f806b6ba71117977"},
+    {file = "pytest-8.3.2-py3-none-any.whl", hash = "sha256:4ba08f9ae7dcf84ded419494d229b48d0903ea6407b030eaec46df5e6a73bba5"},
+    {file = "pytest-8.3.2.tar.gz", hash = "sha256:c132345d12ce551242c87269de812483f5bcc87cdbb4722e48487ba194f9fdce"},
 ]
 
 [package.dependencies]
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 iniconfig = "*"
 packaging = "*"
-pluggy = ">=1.5,<2.0"
+pluggy = ">=1.5,<2"
 
 [package.extras]
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
@@ -698,13 +698,13 @@ pytest = ">=6.2.5"
 
 [[package]]
 name = "pywikibot"
-version = "9.2.0"
+version = "9.3.0"
 description = "Python MediaWiki Bot Framework"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "pywikibot-9.2.0-py3-none-any.whl", hash = "sha256:fd659c3111eebfb3704cddc4e2dcb7afac15f418a8c4cdd4ef680d7658237e60"},
-    {file = "pywikibot-9.2.0.tar.gz", hash = "sha256:3df116778b108207a9e03fdfbdea71eb2f41144fcc9247d8797a4b7a8417aa18"},
+    {file = "pywikibot-9.3.0-py3-none-any.whl", hash = "sha256:7953fc4a6c498057e6eb7d9b762bbccb61348af0a599b89d7e246d5175b20a9b"},
+    {file = "pywikibot-9.3.0.tar.gz", hash = "sha256:0dd8291f1a26abb9fce2c2108a90dc338274988e60d21723aec1d3b0de321b5e"},
 ]
 
 [package.dependencies]
@@ -717,7 +717,7 @@ sseclient = {version = ">=0.0.18,<0.0.23", optional = true, markers = "extra == 
 [package.extras]
 create-isbn-edition-py = ["isbnlib", "unidecode"]
 eventstreams = ["sseclient (>=0.0.18,<0.0.23)"]
-flake8 = ["darglint2", "flake8 (>=5.0.4)", "flake8-bugbear (!=24.1.17)", "flake8-comprehensions (>=3.13.0)", "flake8-docstrings (>=1.4.0)", "flake8-future-annotations", "flake8-mock-x2", "flake8-no-u-prefixed-strings (>=0.2)", "flake8-print (>=5.0.0)", "flake8-quotes (>=3.3.2)", "flake8-raise", "flake8-string-format", "flake8-tuple (>=0.4.1)", "pep8-naming (==0.13.3)", "pep8-naming (>=0.14.0)", "pydocstyle (>=6.3.0)"]
+flake8 = ["darglint2", "flake8 (>=5.0.4)", "flake8-bugbear (!=24.1.17)", "flake8-comprehensions (>=3.13.0)", "flake8-docstrings (>=1.4.0)", "flake8-future-annotations", "flake8-mock-x2", "flake8-no-u-prefixed-strings (>=0.2)", "flake8-print (>=5.0.0)", "flake8-quotes (>=3.3.2)", "flake8-raise", "flake8-tuple (>=0.4.1)", "pep8-naming (==0.13.3)", "pep8-naming (>=0.14.0)", "pydocstyle (>=6.3.0)"]
 google = ["google (>=1.7)"]
 graphviz = ["pydot (>=1.4.1)"]
 hacking = ["hacking", "importlib-metadata (<5.0.0)"]
@@ -728,7 +728,7 @@ memento = ["memento-client (==0.6.1)"]
 mwoauth = ["mwoauth (>=0.2.4,!=0.3.1)"]
 mysql = ["PyMySQL (>=1.0.0)"]
 scripts = ["isbnlib", "memento-client (==0.6.1)", "unidecode"]
-tkinter = ["Pillow (>=8.1.2,!=10.0,!=10.1)"]
+tkinter = ["Pillow (>=10.4)", "Pillow (>=8.1.2,!=10.0,!=10.1)"]
 weblinkchecker-py = ["memento-client (==0.6.1)"]
 wikitextparser = ["wikitextparser (>=0.47.0)"]
 
@@ -1025,4 +1025,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<4"
-content-hash = "1ac94e32b93889bb0a94ee1c59c052b5c4d7a8a4b46259f46cda632c83f9aad9"
+content-hash = "0c9f168f3f8b8da6816941dec1bb381af5ccde948d29596b95f12607a184dd9b"
