@@ -149,6 +149,7 @@ def check_diff(
         for wikilink in comment_wikicode.ifilter_wikilinks():
             with suppress(
                 ValueError,
+                pywikibot.exceptions.InconsistentTitleError,
                 pywikibot.exceptions.InvalidPageError,
                 pywikibot.exceptions.InvalidTitleError,
             ):
