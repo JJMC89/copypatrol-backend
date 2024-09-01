@@ -77,14 +77,14 @@ version = "2024.8.15"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
-cachetools = "5.4.0"
+cachetools = "5.5.0"
 flask = "3.0.3"
-gunicorn = "22.0.0"
+gunicorn = "23.0.0"
 mwparserfromhell = "0.6.6"
-pywikibot = {version = "9.3.0", extras = ["eventstreams", "mwoauth"]}
+pywikibot = {version = "9.3.1", extras = ["eventstreams", "mwoauth"]}
 pywikibot-extensions = "23.3.25"
 requests = "2.32.3"
-sqlalchemy = {version = "2.0.31", extras = ["pymysql"]}
+sqlalchemy = {version = "2.0.32", extras = ["pymysql"]}
 urllib3 = "2.2.2"
 
 [tool.poetry.dev-dependencies]
