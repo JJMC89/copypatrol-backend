@@ -60,7 +60,7 @@ class TurnitinCoreAPI:
             return self.read_response(self.session.send(response.request))
         try:
             response.raise_for_status()
-            return response.json() if response.text else {}  # type: ignore[no-any-return]  # noqa: E501
+            return response.json() if response.text else {}
         except (HTTPError, JSONDecodeError) as e:
             pywikibot.log(e)
             pywikibot.log(f"response: {response.text}")
