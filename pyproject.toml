@@ -78,7 +78,7 @@ version = "2024.10.21"
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
 cachetools = "5.5.0"
-flask = "3.0.3"
+flask = "3.1.0"
 gunicorn = "23.0.0"
 mwparserfromhell = "0.6.6"
 pywikibot = {version = "9.5.0", extras = ["eventstreams", "mwoauth"]}
