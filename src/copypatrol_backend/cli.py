@@ -7,7 +7,7 @@ import operator
 import os
 
 import pywikibot
-from pywikibot.exceptions import InvalidTitleError
+from pywikibot.exceptions import InvalidTitleError, PageSaveRelatedError
 from sqlalchemy.exc import IntegrityError, OperationalError
 
 from copypatrol_backend import database, tca
@@ -155,11 +155,14 @@ def post_ready_counts() -> None:
         if os.environ.get("CPB_ENV") == "prod":  # pragma: no cover
             page = pywikibot.Page(site, f"{site.username()}/open reports", 2)
             page.text = str(diff_count)
-            page.save(
-                summary=f"{diff_count} open reports",
-                minor=False,
-                bot=False,
-            )
+            try:
+                page.save(
+                    summary=f"{diff_count} open reports",
+                    minor=False,
+                    bot=False,
+                )
+            except PageSaveRelatedError:
+                pywikibot.exception()
 
 
 def update_ready_diffs(*, delta: datetime.timedelta | None = None) -> None:
