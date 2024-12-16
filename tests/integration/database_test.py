@@ -194,17 +194,22 @@ def test_queued_diff_from_submission_id(db_session, diffs_data):
         tuple(
             {
                 "project": "wikipedia",
-                "lang": "en",
+                "lang": lang,
                 "page_namespace": 0,
                 "page_title": "Diff_count",
-                "rev_id": 4000 + status,
+                "rev_id": 4005 + status,
                 "rev_parent_id": 4000,
                 "rev_timestamp": "20220101010101",
                 "rev_user_text": "Example",
                 "status": status,
                 "status_timestamp": Timestamp.utcnow().totimestampformat(),
             }
-            for status in range(-4, 0)
+            for lang, status in (
+                ("en", -4),
+                ("en", -3),
+                ("es", -2),
+                ("fr", -1),
+            )
         )
     ],
     indirect=["diffs_data"],
@@ -225,6 +230,32 @@ def test_diff_count(db_session, diffs_data):
                 db_session,
                 database.QueuedDiff,
                 status=[database.Status(status), database.Status.READY],
+            )
+            == 1
+        )
+    assert (
+        database.diff_count(
+            db_session,
+            database.QueuedDiff,
+            site=pywikibot.Site("en", "wikipedia"),
+        )
+        == 2
+    )
+    assert (
+        database.diff_count(
+            db_session,
+            database.QueuedDiff,
+            site=pywikibot.Site("en", "wikipedia"),
+            status=database.Status(-4),
+        )
+        == 1
+    )
+    for lang in ("es", "fr"):
+        assert (
+            database.diff_count(
+                db_session,
+                database.QueuedDiff,
+                site=pywikibot.Site(lang, "wikipedia"),
             )
             == 1
         )

@@ -4,6 +4,7 @@ import argparse
 import datetime
 import multiprocessing.pool
 import operator
+import os
 
 import pywikibot
 from pywikibot.exceptions import InvalidTitleError
@@ -11,6 +12,7 @@ from sqlalchemy.exc import IntegrityError, OperationalError
 
 from copypatrol_backend import database, tca
 from copypatrol_backend.check_diff import check_diff
+from copypatrol_backend.config import meta_config
 from copypatrol_backend.stream_listener import change_stream
 
 
@@ -138,6 +140,28 @@ def check_reports(*, delta: datetime.timedelta | None = None) -> None:
             api.handle_similarity_info(info=info, diff=diff)
 
 
+def post_ready_counts() -> None:
+    sessionmaker = database.create_sessionmaker()
+    for domain in meta_config().domains:
+        site = pywikibot.Site(url=f"https://{domain}/wiki/DUMMY")
+        with sessionmaker.begin() as session:
+            diff_count = database.diff_count(
+                session,
+                database.Diff,
+                site=site,
+                status=database.Status.READY,
+            )
+        pywikibot.info(f"{site!r} has {diff_count!r} open reports")
+        if os.environ.get("CPB_ENV") == "prod":  # pragma: no cover
+            page = pywikibot.Page(site, f"{site.username()}/open reports", 2)
+            page.text = str(diff_count)
+            page.save(
+                summary=f"{diff_count} open reports",
+                minor=False,
+                bot=False,
+            )
+
+
 def update_ready_diffs(*, delta: datetime.timedelta | None = None) -> None:
     with database.create_sessionmaker()() as session:
         for diff in database.diffs_by_status(
@@ -217,6 +241,13 @@ def parse_script_args(*args: str) -> argparse.Namespace:
         help=description,
         allow_abbrev=False,
     )
+    description = "post counts of open reports"
+    setup_subparser = subparsers.add_parser(
+        "counts",
+        description=description,
+        help=description,
+        allow_abbrev=False,
+    )
     description = "setup database and (optionally) webhook"
     setup_subparser = subparsers.add_parser("setup", allow_abbrev=False)
     setup_subparser.add_argument(
@@ -234,6 +265,8 @@ def cli(*args: str) -> int:
         store_changes(since=parsed_args.since, total=parsed_args.total)
     elif parsed_args.action == "check-changes":
         check_changes(limit=parsed_args.limit, poolsize=parsed_args.poolsize)
+    elif parsed_args.action == "counts":
+        post_ready_counts()
     elif parsed_args.action == "reports":
         delta = datetime.timedelta(minutes=-30)
         check_reports(delta=delta)
