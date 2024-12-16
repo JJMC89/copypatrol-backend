@@ -75,6 +75,11 @@ from copypatrol_backend import cli
             id="update-ready-diffs",
         ),
         pytest.param(
+            ("counts",),
+            Namespace(action="counts"),
+            id="counts",
+        ),
+        pytest.param(
             ("setup",),
             Namespace(
                 action="setup",
@@ -108,6 +113,7 @@ def test_parse_script_args(args, expected):
         ("check-changes", "--workers", "3"),
         ("reports", "foo"),
         ("update-ready-diffs", "foo"),
+        ("counts", "foo"),
         ("setup", "--foo"),
     ],
 )

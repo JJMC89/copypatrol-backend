@@ -1,0 +1,12 @@
+[Unit]
+Description=copypatrol backend counts timer
+Requires=copypatrol-backend-counts.service
+
+[Timer]
+AccuracySec=15m
+OnStartupSec=15m
+OnUnitInactiveSec=6h
+Unit=copypatrol-backend-counts.service
+
+[Install]
+WantedBy=timers.target

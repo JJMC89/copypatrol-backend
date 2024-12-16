@@ -21,7 +21,6 @@ from sqlalchemy import (
     Integer,
     LargeBinary,
     TypeDecorator,
-    and_,
     create_engine,
     func,
     select,
@@ -346,11 +345,9 @@ def add_revision(
     rev_user_text: str,
 ) -> None:
     diff_stmt = select(Diff).where(
-        and_(
-            Diff.project == page.site.family.name,
-            Diff.lang == page.site.code,
-            Diff.rev_id == rev_id,
-        )
+        Diff.project == page.site.family.name,
+        Diff.lang == page.site.code,
+        Diff.rev_id == rev_id,
     )
     if session.scalars(diff_stmt).unique().one_or_none():
         return  # pragma: no cover
@@ -409,10 +406,8 @@ def diffs_by_status(
     stmt = (
         select(table_class)
         .where(
-            and_(
-                table_class.status.in_(status),
-                op(table_class.status_timestamp, Timestamp.utcnow() + delta),
-            )
+            table_class.status.in_(status),
+            op(table_class.status_timestamp, Timestamp.utcnow() + delta),
         )
         .order_by(table_class.rev_timestamp.desc())
         .limit(limit)
@@ -434,9 +429,15 @@ def diff_count(
     table_class: type[DiffT],
     /,
     *,
+    site: APISite | None = None,
     status: Status | list[Status] | None = None,
 ) -> int:
     stmt = select(func.count()).select_from(table_class)
+    if site is not None:
+        stmt = stmt.where(
+            table_class.project == site.family.name,
+            table_class.lang == site.code,
+        )
     if status is not None:
         if isinstance(status, Status):
             status = [status]
