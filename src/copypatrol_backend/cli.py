@@ -161,7 +161,7 @@ def post_ready_counts() -> None:
                     minor=False,
                     bot=False,
                 )
-            except PageSaveRelatedError:
+            except (EOFError, PageSaveRelatedError):
                 pywikibot.exception()
 
 
