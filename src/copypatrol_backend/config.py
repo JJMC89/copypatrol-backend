@@ -58,8 +58,8 @@ def meta_config() -> MetaConfig:
     meta = parser["copypatrol"]
     return MetaConfig(
         domains=domains,
-        url_ignore_list_title=meta.get("url-ignore-list-title", fallback=""),
-        user_ignore_list_title=meta.get("user-ignore-list-title", fallback=""),
+        url_ignore_list_title=meta.get("url-ignore-list-title", ""),
+        user_ignore_list_title=meta.get("user-ignore-list-title", ""),
     )
 
 
@@ -69,13 +69,13 @@ def site_config(domain: str) -> SiteConfig:
     parser.read(CONFIGS)
     section = parser[f"copypatrol:{domain}"]
     if os.environ.get("CPB_ENV") in ("prod", "pytest-unit"):
-        pt_ns = section.getlistint("pagetriage-namespaces", fallback=[])
+        pt_ns = section.getlistint("pagetriage-namespaces", [])
     else:  # pragma: no cover
         pt_ns = []
     return SiteConfig(
         domain=domain,
-        enabled=section.getboolean("enabled", fallback=False),
-        namespaces=section.getlistint("namespaces", fallback=[0]),
+        enabled=section.getboolean("enabled", False),
+        namespaces=section.getlistint("namespaces", [0]),
         pagetriage_namespaces=pt_ns,
     )
 
