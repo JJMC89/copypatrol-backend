@@ -81,15 +81,15 @@ cachetools = "5.5.0"
 flask = "3.1.0"
 gunicorn = "23.0.0"
 mwparserfromhell = "0.6.6"
-pywikibot = {version = "9.5.0", extras = ["eventstreams", "mwoauth"]}
+pywikibot = {version = "9.6.1", extras = ["eventstreams", "mwoauth"]}
 pywikibot-extensions = "24.9.21"
 requests = "2.32.3"
 sqlalchemy = {version = "2.0.36", extras = ["pymysql"]}
-urllib3 = "2.2.3"
+urllib3 = "2.3.0"
 
 [tool.poetry.dev-dependencies]
 covdefaults = "2.3.0"
-pytest = "8.3.3"
+pytest = "8.3.4"
 pytest-cov = "6.0.0"
 pytest-env = "1.1.5"
 pytest-mock = "3.14.0"
