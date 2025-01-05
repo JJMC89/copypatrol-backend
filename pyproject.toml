@@ -1,6 +1,45 @@
 [build-system]
-requires = ["poetry-core>=1.7.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[project]
+authors = [
+    { name = "JJMC89" },
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+dependencies = [
+    "cachetools (==5.5.0)",
+    "flask (==3.1.0)",
+    "gunicorn (==23.0.0)",
+    "mwparserfromhell (==0.6.6)",
+    "pywikibot [eventstreams, mwoauth] (==9.6.1)",
+    "pywikibot-extensions (==24.9.21)",
+    "requests (==2.32.3)",
+    "sqlalchemy [pymysql] (==2.0.36)",
+    "urllib3 (==2.3.0)",
+]
+description = "CopyPatrol backend bot"
+keywords = [ "copyright", "wikipedia" ]
+license = "MIT"
+name = "copypatrol-backend"
+readme = "README.md"
+requires-python = ">=3.11"
+version = "2024.12.23"
+
+[project.scripts]
+copypatrol-backend = "copypatrol_backend.cli:cli"
+
+[project.urls]
+documentation = "https://meta.wikimedia.org/wiki/Special:MyLanguage/CopyPatrol"
+issues = "https://phabricator.wikimedia.org/project/view/1638/"
+source = "https://github.com/JJMC89/copypatrol-backend"
 
 
 [tool.black]
@@ -20,11 +59,11 @@ plugins = [
 
 
 [tool.isort]
+add_imports = ["from __future__ import annotations"]
 atomic = true
+lines_after_imports = 2
 profile = "black"
 py_version = 311
-add_imports = ["from __future__ import annotations"]
-lines_after_imports = 2
 
 
 [tool.mypy]
@@ -57,37 +96,11 @@ disable_error_code = [
 
 
 [tool.poetry]
-authors = ["JJMC89"]
-classifiers = [
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Natural Language :: English",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3 :: Only",
-    "Typing :: Typed",
-]
-description = "CopyPatrol backend bot"
-documentation = "https://meta.wikimedia.org/wiki/Special:MyLanguage/CopyPatrol"
-keywords = ["copyright", "wikipedia"]
-license = "MIT"
-name = "copypatrol-backend"
-readme = "README.md"
-repository = "https://github.com/JJMC89/copypatrol-backend"
-version = "2024.12.23"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<4"
-cachetools = "5.5.0"
-flask = "3.1.0"
-gunicorn = "23.0.0"
-mwparserfromhell = "0.6.6"
-pywikibot = {version = "9.6.1", extras = ["eventstreams", "mwoauth"]}
-pywikibot-extensions = "24.9.21"
-requests = "2.32.3"
-sqlalchemy = {version = "2.0.36", extras = ["pymysql"]}
-urllib3 = "2.3.0"
+python = "^3.11"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.test.dependencies]
 covdefaults = "2.3.0"
 pytest = "8.3.4"
 pytest-cov = "6.0.0"
@@ -96,9 +109,6 @@ pytest-mock = "3.14.0"
 pytest-randomly = "3.16.0"
 pytest-socket = "0.7.0"
 responses = "0.25.3"
-
-[tool.poetry.scripts]
-copypatrol-backend = "copypatrol_backend.cli:cli"
 
 
 [tool.pytest]
