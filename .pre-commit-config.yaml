@@ -52,7 +52,7 @@ repos:
           - --remove-duplicate-keys
           - --remove-unused-variables
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.0
+    rev: 6.0.1
     hooks:
       - id: isort
   - repo: https://github.com/asottile/yesqa
@@ -68,7 +68,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.2
+    rev: 1.8.3
     hooks:
       - id: bandit
         args:
@@ -76,7 +76,7 @@ repos:
           - B101
         exclude: '^tests/'
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.1.1
+    rev: 7.1.2
     hooks:
       - id: flake8
         additional_dependencies:
@@ -84,7 +84,7 @@ repos:
           - flake8-typing-imports
           - pep8-naming
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.14.1
+    rev: v1.15.0
     hooks:
       - id: mypy
         args: []
