@@ -27,7 +27,7 @@ dependencies = [
 ]
 description = "CopyPatrol backend bot"
 keywords = [ "copyright", "wikipedia" ]
-license = "MIT"
+license = { text = "MIT" }
 name = "copypatrol-backend"
 readme = "README.md"
 requires-python = ">=3.11"
