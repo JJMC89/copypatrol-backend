@@ -127,12 +127,30 @@ def test_stream_filter(mocker, data, expected):
 
 class _Event:
     def __init__(self, data):
-        self.event = "message"
+        self.type = "message"
         self.data = json.dumps(data)
 
 
-def _source(**kwargs):
-    return iter([_Event(DATA1), _Event(DATA2), _Event(DATA3)])
+class _ES:
+    def __init__(self, *args, **kwargs):
+        self._i = 0
+        self._data = [_Event(DATA1), _Event(DATA2), _Event(DATA3)]
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._i < len(self._data):
+            item = self._data[self._i]
+            self._i += 1
+            return item
+        raise StopIteration
+
+    def connect(self, *args, **kwargs):
+        pass
+
+    def close(self, *args, **kwargs):
+        pass
 
 
 def _code_fam_from_url(url, name):
@@ -152,7 +170,7 @@ def test_change_stream(mocker):
     )
     mocker.patch(
         "pywikibot.comms.eventstreams.EventSource",
-        _source,
+        _ES,
     )
     mocker.patch(
         "copypatrol_backend.stream_listener.config.user_ignore_list",
