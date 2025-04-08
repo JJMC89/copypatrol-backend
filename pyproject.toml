@@ -31,7 +31,7 @@ license = { text = "MIT" }
 name = "copypatrol-backend"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "2024.12.23"
+version = "2025.4.8"
 
 [project.scripts]
 copypatrol-backend = "copypatrol_backend.cli:cli"

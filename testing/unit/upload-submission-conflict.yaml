@@ -1,0 +1,10 @@
+responses:
+  - response:
+      method: PUT
+      url: >-
+        https://wikimedia.tii-sandbox.com/api/v1/submissions/7b3074cf-4d3b-4648-8c68-f56aee0f1058/original
+      body: >-
+        {"success":false,"status":409,"code":"CONFLICT","reference":"0d8f22d7fb2d0765e0eafaf32f677496","debug_message":"You have already uploaded data to your submission. Create another submission to upload new data.","message":"You have already uploaded data to your submission. Create another submission to upload new data."}
+      status: 409
+      content_type: text/plain
+      auto_calculate_content_length: false

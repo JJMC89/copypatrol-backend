@@ -158,6 +158,12 @@ class TurnitinCoreAPI:
             },
             data=text.encode(),
         )
+        if (
+            response.status_code == 409
+            and response.json().get("code") == "CONFLICT"
+        ):
+            pywikibot.debug(f"previous upload for {sid=}")
+            return
         self.read_response(response)
         pywikibot.debug(f"upload successful for {sid=}")
 
