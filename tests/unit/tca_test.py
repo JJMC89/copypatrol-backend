@@ -51,7 +51,8 @@ def test_create_submission(mock_responses):
     [
         ("success", nullcontext()),
         ("eula", nullcontext()),
-        ("fail", pytest.raises(HTTPError)),
+        ("conflict", nullcontext()),
+        ("large", pytest.raises(HTTPError)),
     ],
 )
 def test_upload_submission(mock_responses, mock_tca_eula, case, context):
