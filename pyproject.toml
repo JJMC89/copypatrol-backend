@@ -23,7 +23,7 @@ dependencies = [
     "pywikibot-extensions (==24.9.21)",
     "requests (==2.32.3)",
     "sqlalchemy [pymysql] (==2.0.40)",
-    "urllib3 (==2.3.0)",
+    "urllib3 (==2.4.0)",
 ]
 description = "CopyPatrol backend bot"
 keywords = [ "copyright", "wikipedia" ]
