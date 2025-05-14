@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "cachetools (==5.5.2)",
-    "flask (==3.1.0)",
+    "flask (==3.1.1)",
     "gunicorn (==23.0.0)",
     "mwparserfromhell (==0.6.6)",
     "pywikibot [eventstreams, mwoauth] (==10.0.0)",
