@@ -21,7 +21,7 @@ dependencies = [
     "mwparserfromhell (==0.6.6)",
     "pywikibot [eventstreams, mwoauth] (==10.1.0)",
     "pywikibot-extensions (==24.9.21)",
-    "requests (==2.32.3)",
+    "requests (==2.32.4)",
     "sqlalchemy [pymysql] (==2.0.41)",
     "urllib3 (==2.4.0)",
 ]
