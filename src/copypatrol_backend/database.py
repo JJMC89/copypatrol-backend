@@ -58,17 +58,17 @@ CREATE_TABLE_ARGS = {
 
 
 TinyInt = Integer().with_variant(
-    sqlalchemy.dialects.mysql.TINYINT(),  # type: ignore[no-untyped-call]
+    sqlalchemy.dialects.mysql.TINYINT(),
     "mysql",
     "mariadb",
 )
 UnsignedFloat = Float().with_variant(
-    sqlalchemy.dialects.mysql.FLOAT(unsigned=True),  # type: ignore[no-untyped-call]  # noqa: E501
+    sqlalchemy.dialects.mysql.FLOAT(unsigned=True),
     "mysql",
     "mariadb",
 )
 UnsignedInteger = Integer().with_variant(
-    sqlalchemy.dialects.mysql.INTEGER(unsigned=True),  # type: ignore[no-untyped-call]  # noqa: E501
+    sqlalchemy.dialects.mysql.INTEGER(unsigned=True),
     "mysql",
     "mariadb",
 )
