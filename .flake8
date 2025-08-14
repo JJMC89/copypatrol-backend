@@ -1,4 +1,4 @@
 [flake8]
-min-python-version = 3.11.0
+min-python-version = 3.13.0
 per-file-ignores =
     tests/unit/tca_test.py: E501

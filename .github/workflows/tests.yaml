@@ -8,18 +8,13 @@ on:
       - main
 jobs:
   test:
-    strategy:
-      matrix:
-        python-version:
-          - 3.11
-          - 3.13
-    name: python ${{ matrix.python-version }}
+    name: python 3.13
     runs-on: ubuntu-latest
     steps:
     - name: set up python
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.13
     - name: install poetry
       uses: snok/install-poetry@v1
     - name: checkout
