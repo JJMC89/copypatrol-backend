@@ -18,7 +18,7 @@ jobs:
     - name: install poetry
       uses: snok/install-poetry@v1
     - name: checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         persist-credentials: false
     - name: install package
