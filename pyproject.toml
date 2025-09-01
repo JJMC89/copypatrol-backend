@@ -108,7 +108,7 @@ pytest-env = "1.1.5"
 pytest-mock = "3.14.1"
 pytest-randomly = "3.16.0"
 pytest-socket = "0.7.0"
-responses = "0.25.7"
+responses = "0.25.8"
 
 
 [tool.pytest]
