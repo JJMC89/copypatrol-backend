@@ -9,6 +9,7 @@ import os
 import pywikibot
 from pywikibot.exceptions import InvalidTitleError, PageSaveRelatedError
 from sqlalchemy.exc import IntegrityError, OperationalError
+from sqlalchemy.orm.exc import StaleDataError
 
 from copypatrol_backend import database, tca
 from copypatrol_backend.check_diff import check_diff
@@ -94,14 +95,20 @@ def check_changes(*, poolsize: int = 1, limit: int | None = None) -> None:
                         continue
                     else:
                         diff.status = database.Status.CREATED
-                        session.commit()
+                        try:
+                            session.commit()
+                        except StaleDataError:  # pragma: no cover
+                            pywikibot.exception(exc_info=False)
                 try:
                     api.upload_submission(diff.submission_id, text)
                 except Exception:  # pragma: no cover
                     pywikibot.exception()
                 else:
                     diff.status = database.Status.UPLOADED
-                    session.commit()
+                    try:
+                        session.commit()
+                    except StaleDataError:  # pragma: no cover
+                        pywikibot.exception(exc_info=False)
 
 
 def generate_reports(*, delta: datetime.timedelta | None = None) -> None:
@@ -272,8 +279,14 @@ def cli(*args: str) -> int:
         post_ready_counts()
     elif parsed_args.action == "reports":
         delta = datetime.timedelta(minutes=-30)
-        check_reports(delta=delta)
-        generate_reports(delta=delta)
+        try:
+            check_reports(delta=delta)
+        except StaleDataError:  # pragma: no cover
+            pywikibot.exception(exc_info=False)
+        try:
+            generate_reports(delta=delta)
+        except StaleDataError:  # pragma: no cover
+            pywikibot.exception(exc_info=False)
     elif parsed_args.action == "update-ready-diffs":
         update_ready_diffs(delta=datetime.timedelta(weeks=-1))
     elif parsed_args.action == "setup":
