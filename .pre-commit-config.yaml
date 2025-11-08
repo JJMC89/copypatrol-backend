@@ -98,7 +98,7 @@ repos:
           - types-pymysql
           - types-requests
   - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.4.1
+    rev: v6.2.1
     hooks:
       - id: beautysh
         additional_dependencies:
