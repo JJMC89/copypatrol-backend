@@ -68,7 +68,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.6
+    rev: 1.9.0
     hooks:
       - id: bandit
         args:
@@ -98,7 +98,7 @@ repos:
           - types-pymysql
           - types-requests
   - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.2.1
+    rev: v6.4.1
     hooks:
       - id: beautysh
         additional_dependencies:
