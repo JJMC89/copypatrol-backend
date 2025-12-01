@@ -112,9 +112,10 @@ responses = "0.25.8"
 
 
 [tool.pytest]
-
-[tool.pytest.ini_options]
-addopts = "--cov --no-cov-on-fail"
+addopts = [
+    "--cov",
+    "--no-cov-on-fail",
+]
 verbosity_assertions = 2
 
 [tool.pytest_env]
