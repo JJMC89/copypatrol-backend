@@ -15,14 +15,14 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "cachetools == 6.2.0",
+    "cachetools == 6.2.2",
     "flask == 3.1.2",
     "gunicorn == 23.0.0",
     "mwparserfromhell == 0.7.2",
     "pywikibot [eventstreams, mwoauth] == 10.4.0",
     "pywikibot-extensions == 24.9.21",
     "requests == 2.32.5",
-    "sqlalchemy [pymysql] == 2.0.43",
+    "sqlalchemy [pymysql] == 2.0.44",
     "urllib3 == 2.5.0",
 ]
 description = "CopyPatrol backend bot"
