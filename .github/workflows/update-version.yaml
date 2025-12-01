@@ -19,7 +19,7 @@ jobs:
       - name: install poetry
         uses: snok/install-poetry@v1
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: check and update version
         run: |
           DATE=$(date -u +%Y.%-m.%-d)
