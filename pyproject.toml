@@ -102,7 +102,7 @@ python = "^3.13"
 
 [tool.poetry.group.test.dependencies]
 covdefaults = "2.3.0"
-pytest = "8.4.2"
+pytest = "9.0.1"
 pytest-cov = "7.0.0"
 pytest-env = "1.2.0"
 pytest-mock = "3.15.1"
