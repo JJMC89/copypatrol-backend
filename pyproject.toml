@@ -116,6 +116,7 @@ addopts = [
     "--cov",
     "--no-cov-on-fail",
 ]
+strict = true
 verbosity_assertions = 2
 
 [tool.pytest_env]
