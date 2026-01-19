@@ -12,7 +12,6 @@ import flask
 from copypatrol_backend import database, tca
 from copypatrol_backend.config import tca_config
 
-
 if TYPE_CHECKING:
     from flask.typing import ResponseReturnValue
 
