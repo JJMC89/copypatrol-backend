@@ -10,6 +10,7 @@ from typing import NamedTuple
 import cachetools.func
 import pywikibot
 
+
 CONFIGS = [os.path.expanduser("~/.copypatrol.ini"), ".copypatrol.ini"]
 
 

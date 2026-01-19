@@ -14,6 +14,7 @@ from pywikibot_extensions.page import Page
 
 from copypatrol_backend.wiki import load_revisions
 
+
 if TYPE_CHECKING:
     from pywikibot.site import APISite
 

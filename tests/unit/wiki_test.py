@@ -5,6 +5,7 @@ import pywikibot
 from copypatrol_backend import wiki
 from testing.resources import resource
 
+
 SITE = pywikibot.Site("en", "wikipedia")
 
 

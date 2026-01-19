@@ -6,6 +6,7 @@ import pywikibot
 import pywikibot.exceptions
 from pywikibot.page import Revision
 
+
 if TYPE_CHECKING:
     from pywikibot.site import APISite
 

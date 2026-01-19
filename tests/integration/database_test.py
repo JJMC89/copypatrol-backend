@@ -10,6 +10,7 @@ from sqlalchemy.sql.expression import text
 
 from copypatrol_backend import database
 
+
 UUID = uuid.uuid4()
 
 

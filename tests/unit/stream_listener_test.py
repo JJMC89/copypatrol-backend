@@ -6,6 +6,7 @@ import pytest
 
 from copypatrol_backend import stream_listener
 
+
 DATA1 = {
     "meta": {
         "domain": "en.wikipedia.org",

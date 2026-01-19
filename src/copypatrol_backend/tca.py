@@ -16,6 +16,7 @@ from urllib3.util import Retry
 
 from copypatrol_backend import config, database, wiki
 
+
 if TYPE_CHECKING:
     from pywikibot.site import APISite
 

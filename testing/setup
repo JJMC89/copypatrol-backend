@@ -6,6 +6,7 @@ import shutil
 
 import pymysql
 
+
 CONFIG = ".copypatrol.ini"
 
 
@@ -36,10 +37,12 @@ def create_database() -> None:
         connection.cursor() as cursor,
     ):
         cursor.execute(f"DROP DATABASE {os.environ['CPB_DB_DATABASE']}")
-        cursor.execute(f"""\
+        cursor.execute(
+            f"""\
 CREATE DATABASE {os.environ['CPB_DB_DATABASE']}
 DEFAULT CHARACTER SET = utf8mb4
-""")
+"""
+        )
         connection.commit()
 
 

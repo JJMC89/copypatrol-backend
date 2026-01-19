@@ -9,6 +9,7 @@ from pywikibot.page import Revision
 from copypatrol_backend import check_diff
 from testing.resources import resource
 
+
 SITE = pywikibot.Site("en", "wikipedia")
 
 
