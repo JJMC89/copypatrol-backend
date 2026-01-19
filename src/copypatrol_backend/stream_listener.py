@@ -6,7 +6,6 @@ from pywikibot.comms.eventstreams import EventStreams
 
 from copypatrol_backend import config
 
-
 if TYPE_CHECKING:
     import datetime
     from collections.abc import Generator
