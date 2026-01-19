@@ -61,7 +61,6 @@ plugins = [
 [tool.isort]
 add_imports = ["from __future__ import annotations"]
 atomic = true
-lines_after_imports = 2
 profile = "black"
 py_version = 313
 
