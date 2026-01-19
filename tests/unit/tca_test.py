@@ -11,7 +11,6 @@ from copypatrol_backend.database import Source
 from copypatrol_backend.tca import TurnitinCoreAPI
 from testing.resources import resource
 
-
 SID = UUID("7b3074cf-4d3b-4648-8c68-f56aee0f1058")
 
 

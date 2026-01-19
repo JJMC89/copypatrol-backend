@@ -36,7 +36,6 @@ from sqlalchemy.orm import (
 
 from copypatrol_backend import wiki
 
-
 if TYPE_CHECKING:
     from collections.abc import Callable, Sequence
 

@@ -9,7 +9,6 @@ from sqlalchemy import Dialect, LargeBinary
 
 from copypatrol_backend import database
 
-
 database.BinaryDecoratorBase.impl = LargeBinary
 
 
