@@ -26,14 +26,14 @@ files = [
 
 [[package]]
 name = "certifi"
-version = "2026.7.22"
+version = "2026.10.23"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
 python-versions = ">=3.7"
 groups = ["main", "test"]
 files = [
-    {file = "certifi-2026.7.22-py3-none-any.whl", hash = "sha256:62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"},
-    {file = "certifi-2026.7.22.tar.gz", hash = "sha256:741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55"},
+    {file = "certifi-2026.10.23-py3-none-any.whl", hash = "sha256:e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1"},
+    {file = "certifi-2026.10.23.tar.gz", hash = "sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd"},
 ]
 
 [[package]]
@@ -593,27 +593,6 @@ files = [
 ]
 
 [[package]]
-name = "mwoauth"
-version = "0.4.0"
-description = "A generic MediaWiki OAuth handshake helper."
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "mwoauth-0.4.0-py3-none-any.whl", hash = "sha256:fed9bc7d6bbabb5f691b918af0ac844e13c9b75d5fa51a898f36d54d798b5fe1"},
-    {file = "mwoauth-0.4.0.tar.gz", hash = "sha256:22e3403e748e70146f8eccc1430fe542c9f9c4ff677eff424a52e644f6d8f7c5"},
-]
-
-[package.dependencies]
-oauthlib = "*"
-PyJWT = ">=1.0.1"
-requests = "*"
-requests-oauthlib = "*"
-
-[package.extras]
-flask = ["flask"]
-
-[[package]]
 name = "mwparserfromhell"
 version = "0.7.2"
 description = "MWParserFromHell is a parser for MediaWiki wikicode"
@@ -665,23 +644,6 @@ files = [
 ]
 
 [[package]]
-name = "oauthlib"
-version = "4.0.0"
-description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "oauthlib-4.0.0-py3-none-any.whl", hash = "sha256:624c28c13a0a59cabf9747dfa52af63be3e512a7f2714df16e91b5b3a145e6cd"},
-    {file = "oauthlib-4.0.0.tar.gz", hash = "sha256:efb274799819440f95b4ab3b818869f1ce9ae26c5beacba0201d1a1b76b54f86"},
-]
-
-[package.extras]
-rsa = ["cryptography (>=3.0.0)"]
-signals = ["blinker (>=1.4.0)"]
-signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
-
-[[package]]
 name = "packaging"
 version = "26.3"
 description = "Core utilities for Python packages"
@@ -723,37 +685,6 @@ files = [
 
 [package.extras]
 windows-terminal = ["colorama (>=0.4.6)"]
-
-[[package]]
-name = "pyjwt"
-version = "2.15.1"
-description = "JSON Web Token implementation in Python"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pyjwt-2.15.1-py3-none-any.whl", hash = "sha256:42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193"},
-    {file = "pyjwt-2.15.1.tar.gz", hash = "sha256:4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8"},
-]
-
-[package.extras]
-crypto = ["cryptography (>=3.4.0)"]
-
-[[package]]
-name = "pymysql"
-version = "1.2.3"
-description = "Pure Python MySQL Driver"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pymysql-1.2.3-py3-none-any.whl", hash = "sha256:14f1c68e2ed859243ae5ca41ffbe677027fc46bc136a9f0be8a4e928e5e7415a"},
-    {file = "pymysql-1.2.3.tar.gz", hash = "sha256:d5b288529782e536ae171866df3ca9dc4f6cbfb3cc2f18e6f837fbb90dbc262b"},
-]
-
-[package.extras]
-ed25519 = ["PyNaCl (>=1.6.2)"]
-rsa = ["cryptography (>=46.0.7)"]
 
 [[package]]
 name = "pytest"
@@ -889,12 +820,9 @@ files = [
 ]
 
 [package.dependencies]
-mwoauth = {version = ">=0.4.0", optional = true, markers = "extra == \"mwoauth\""}
 mwparserfromhell = ">=0.7.2"
 packaging = ">=25.0"
-PyJWT = {version = "!=2.10.0,!=2.10.1", optional = true, markers = "extra == \"mwoauth\""}
 requests = ">=2.32.3"
-requests-sse = {version = ">=0.5.2", optional = true, markers = "extra == \"eventstreams\""}
 
 [package.extras]
 all-no-gui = ["PyJWT (!=2.10.0,!=2.10.1)", "PyMySQL (>=1.1.2)", "beautifulsoup4 (>=4.14.3)", "fake-useragent (>=2.2.0)", "googlesearch-python (>=1.3.0)", "memento_client (==0.6.1)", "mwoauth (>=0.4.0)", "pydot (>=4.0.1)", "python-stdnum (>=2.2)", "requests-sse (>=0.5.2)", "wikitextparser (>=0.56.4)"]
@@ -1033,40 +961,6 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<8)"]
 
 [[package]]
-name = "requests-oauthlib"
-version = "2.0.0"
-description = "OAuthlib authentication support for Requests."
-optional = false
-python-versions = ">=3.4"
-groups = ["main"]
-files = [
-    {file = "requests-oauthlib-2.0.0.tar.gz", hash = "sha256:b3dffaebd884d8cd778494369603a9e7b58d29111bf6b41bdc2dcd87203af4e9"},
-    {file = "requests_oauthlib-2.0.0-py2.py3-none-any.whl", hash = "sha256:7dd8a5c40426b779b0868c404bdef9768deccf22749cde15852df527e6269b36"},
-]
-
-[package.dependencies]
-oauthlib = ">=3.0.0"
-requests = ">=2.0.0"
-
-[package.extras]
-rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
-
-[[package]]
-name = "requests-sse"
-version = "0.5.3"
-description = "server-sent events python client library based on requests"
-optional = false
-python-versions = "<4.0,>=3.7"
-groups = ["main"]
-files = [
-    {file = "requests_sse-0.5.3-py3-none-any.whl", hash = "sha256:dc3e053e22fdcf002ca1fbd1794967d42b82b24539f5b7fe0e807301dd4ef4ec"},
-    {file = "requests_sse-0.5.3.tar.gz", hash = "sha256:107c63afb2a2292b422ab2504849f3adb54b4c884700646ebe9f6e4178ba375c"},
-]
-
-[package.dependencies]
-requests = ">=2.0.0,<3.0.0"
-
-[[package]]
 name = "responses"
 version = "0.26.3"
 description = "A utility library for mocking out the `requests` Python library."
@@ -1169,7 +1063,6 @@ files = [
 ]
 
 [package.dependencies]
-pymysql = {version = "*", optional = true, markers = "extra == \"pymysql\""}
 typing-extensions = ">=4.6.0"
 
 [package.extras]
